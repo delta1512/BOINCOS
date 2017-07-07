@@ -1,0 +1,24 @@
+# Custom i3blocks config
+
+command=/usr/lib/i3blocks/$BLOCK_NAME
+separator_block_width=15
+markup=none
+
+[disk]
+label=Space
+instance=/
+interval=30
+
+[iface]
+interval=10
+color=#00FF00
+
+[cpu]
+label=CPU
+command=grep 'cpu ' /proc/stat | awk '{u=($2+$4)*100/($2+$4+$5)} END {printf "%.2f", u}' && echo "%"
+interval=1
+
+[time]
+label=Time:
+command=date '+%H:%M'
+interval=5
