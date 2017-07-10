@@ -7,7 +7,7 @@ chdir('/boot/grub')
 #backup():
 #backs up the contents of fileName to fileName.bak
 def backup(fileName):
-    copyfile(fileName, '/' + fileName + '.bak')
+    copyfile(fileName, '/' +fileName + '.bak')
 
 #findEntry():
 #looks at the start of each line to find the term within the config
@@ -56,25 +56,33 @@ def makeNovideoEntry(entry):
             occurance = 0
             for char in line:
                 if char == "'":
-                    name += char
                     occurance += 1
                 if occurance > 0:
-                    if occurance >= 2:
-                        name += char #works for some reason if this is put here
-                        break
                     name += char
-            line.replace(name, "'New Computer'") #does not successfully replace
-            entry[i] = line
+                    if occurance >= 2:
+                        break
+            entry[i] = line.replace(name, "'New Computer'")
         if len(line) > 1:
             if line[:7].split()[0] == 'linux':
-                #witnessed the result of the following removing the \n so that
-                #the next command appears to be in the same line. Be sure that
-                #grub can still operate, else refactor the code to satisfy
-                entry[i] = line + 'nomodeset'
+                entry[i] = line[:len(line)-1] + ' nomodeset\n'
     with open('/etc/grub.d/40_custom', 'a') as custom:
         for line in entry:
             custom.write(line)
 
-backup('grub.cfg')
-findEntry('submenu', True)
-makeNovideoEntry(findEntry('menuentry', False))
+#makeDefaultEntry():
+#checks the /etc/default/grub file to see if it has the necessary GRUB_DEFAULT
+#flag. If yes, leave it as is, else leave as is
+def makeDefaultEntry():
+    temporaryFile = []
+    needsLine = False
+    with open('/etc/default/grub', 'r') as grubFlags:
+        for line in grubFlags:
+            if (line[:12] == 'GRUB_DEFAULT') and (line[13:] != "'New Computer'"):
+                needsLine = True
+                continue
+            temporaryFile.append(line)
+        if needsLine:
+            with open('/etc/default/grub', 'w') as grubFlags:
+                for line in temporaryFile:
+                    grubFlags.write(line)
+                grubFlags.write("\nGRUB_DEFAULT='New Computer'")
