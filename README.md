@@ -16,4 +16,4 @@ BOINC-OS is currently being developed so that it can run on a subset of hardware
 
 - [Benjamin Collings](https://github.com/Aurailus)
 
-For detailed information on generous contributors and donations, see Contributors.md!
+For detailed information on generous contributors and donations, see [Contributors.md](./Contributors.md)!
