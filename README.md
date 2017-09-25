@@ -4,7 +4,7 @@ Repository for the collection of customised files and documentation used in the 
 
 ## What is BOINC-OS?
 
-BOINC-OS is a customised operating system tasked with the sole purpose of performing distributed/volunteer computing using the Berkley Open Infrastructure for Networked Computing [BOINC](https://boinc.berkeley.edu). BOINC-OS's goal is to be run on a USB abd be able to boot into any type of hardware in order to use the computer for compute tasks.
+BOINC-OS is a customised operating system tasked with the sole purpose of performing distributed/volunteer computing using the Berkley Open Infrastructure for Networked Computing [BOINC](https://boinc.berkeley.edu). BOINC-OS's goal is to be run on a USB and be able to boot into any type of hardware in order to use the computer for compute tasks.
 
 ## Where can i get it?
 
