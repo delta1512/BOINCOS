@@ -2,7 +2,7 @@
 
 ### [Delta](https://github.com/delta1512)
 
-Main founder and responsible for the backend customisation of the archlinux base for BOINC-OS.
+Main founder and responsible for the backend customisation of the archlinux base for BOINCOS.
 #### Donations
 
 |Coin        |Address                                   |
@@ -11,6 +11,10 @@ Main founder and responsible for the backend customisation of the archlinux base
 |Bitcoin     |1M4r147uUQRjnV1hQykc42pQzTKaT873Vt        |
 |Litecoin    |LaecuPaipB7sGiKGCpxRcZpgdB6ijaJ2uU        |
 |Ethereum    |0x1Bc00e04961f375CECD84110D9a113B127fB22AA|
+
+#### Contact
+
+- boincosdelta@gmail.com
 
 ### [Benjamin Collings](https://github.com/Aurailus)
 
