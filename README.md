@@ -16,9 +16,9 @@ BOINCOS is a customised operating system tasked with the sole purpose of perform
 
 ## Where can I get it?
 
-BOINCOS will at first be accessed through this repository's releases page (if possible). In the near future a bittorrent distribution method will be looked into.
+BOINCOS will at first be accessed through this repository's releases page. In the near future a bittorrent distribution method will be looked into.
 
-BOINCOS has not been released as of yet.
+Find the latest release on the [releases page](https://github.com/delta1512/BOINCOS/releases).
 
 ## Requirements
 
