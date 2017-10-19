@@ -20,6 +20,8 @@ Main founder and responsible for the backend customisation of the archlinux base
 
 Developer of the main GUI configuration application and consultant for the graphical aesthetics of the OS.
 
+Web developer for the BOINCOS official website.
+
 ### Foxifi (Space Dollars Founder)
 
 Generous initial donator and supporter of the project.
