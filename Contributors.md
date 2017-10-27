@@ -16,11 +16,15 @@ Main founder and responsible for the backend customisation of the archlinux base
 
 - boincosdelta@gmail.com
 
+---
+
 ### [Benjamin Collings](https://github.com/Aurailus)
 
 Developer of the main GUI configuration application and consultant for the graphical aesthetics of the OS.
 
 Web developer for the BOINCOS official website.
+
+---
 
 ### Foxifi (Space Dollars Founder)
 
