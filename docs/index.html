@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Boinc OS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8"> 
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto:300,300i,500,100" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <style>
+      .screenshots img, .screenshots .desc {
+        display: inline-block;
+        vertical-align: top;
+      }
+      .screenshots img {
+        width: 40%;
+        height: auto;
+        padding: 16px;
+      }
+      .screenshots .desc {
+        padding-top: 16px;
+        width: 60%;
+      }
+      .toplogo {
+        width: 40%;
+        max-width: 400px;
+        height: auto;
+        margin-top: 8px;
+        filter: drop-shadow(0px 2px 6px #000000);
+      }
+      .rowimg2 img {
+        width: 50%;
+        padding: 16px;
+        vertical-align: bottom;
+      }
+      img.firstinfo {
+        border-right: 3px solid #777; border-bottom: 3px solid #777;
+      }
+      img.secondinfo {
+        border-bottom: 3px solid #777;
+      }
+      img.thirdinfo {
+        border-right: 3px solid #777;
+      }
+      @media screen and (max-width: 700px) {
+        .toplogo {
+          width: 50%;
+        }
+        .rowimg2 img {
+          width: 100%;
+        }
+        .screenshots img {
+          width: 80%;
+          max-width: 400px;
+          display: block;
+          margin: auto;
+        }
+        .screenshots .desc {
+          width: 100%;
+        }
+        img.firstinfo, img.secondinfo, img.thirdinfo {
+          border: none;
+          border-bottom: 3px solid #777;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+    </header>
+    <main>
+      <div class="landing">
+        <div class="center">
+          <img src="media/BOINCOS-Logo.svg" class="toplogo">
+          <h1>BOINC OS</h1>
+          <p>Take Science Everywhere.</p>
+        </div>
+        <a href="#about" class="cta_arrow"></a>
+      </div>
+      <div class="wrapper" style="background-color: #fff">
+        <div class="content" id="about">
+          <div class="col2">
+            <h2>What is BOINC OS?</h2>
+            <p>A minimalist, pre-packaged linux distribution for performing distributed/volunteer computing on as large of range of computer hardware as possible.</p>
+            <h2>Mission</h2>
+            <p><em>"Before making this project I saw and heard of my friends, acquaintances and even people online having computer hardware sitting and doing nothing. The possible usage of this idle hardware prompted me to conceptualise this solution."</em></p>
+            <p><em>"I want people to see the power that computers have in solving large scale and physically unimaginable problems humanity is faced with - and what better way to do it than making it as simple as possible for people to get involved in computational science."</em></p>
+            <div class="hoverpic"><img src="media/deltaprofile.jpg" width="128" height="128"><a href="https://github.com/delta1512"><p>Delta</p></a></div>
+            <div style="display: inline-block; width: calc(100% - 180px); vertical-align: top; margin-left: 16px; margin-top: 24px;">
+              <p>&mdash; Delta1512</p>
+              <p><small><em>Co-Founder of BoincOS</em></small></p>
+            </div>
+          </div><!--
+        --><div class="col2">
+            <a href="https://boinc.berkeley.edu/" target="_blank">
+            <img src="media/boinc.png" style="width: 100%; display: block; margin: auto; padding: 32px 64px;"></a>
+            <br>
+            <img src="media/STEMicons.svg" style="width: 100%; display: block; margin: auto; padding: 24px 48px;">
+          </div>
+        </div>
+        <div class="content screenshots">
+          <img src="media/easy_to_use.svg"><!--
+        --><div class="desc">
+            <h2>Easy to Use</h2>
+            <p>BOINCOS makes it easy to get started with distributed computing and includes an intuitive and simplistic GUI in addition to extensive documentation. It’s as easy as Flash - Boot - Configure - Compute!</p>
+          </div>
+
+          <img src="media/Portable.svg"><!--
+        --><div class="desc">
+            <h2>Portable</h2>
+            <p>This OS is built to run on a USB and can be taken from computer-to-computer to contribute their capabilities and hardware to scientific computing.</p>
+          </div>
+
+          <img src="media/Multiple_spins.svg"><!--
+        --><div class="desc">
+            <h2>Multiple Spins</h2>
+            <p>Multiple different versions that are specific to various use-cases. This includes server/headless computers, standard graphical install for people who need a quick solution and a larger, more complete operating system.</p>
+          </div>
+        </div>
+        <div class="content">
+          <h2 style="font-size: 2.5em; text-align: center;">Get BOINC OS</h2>
+
+          <div class="col3">
+            <div class="downloaddiv">
+              <div class="inner disabled">
+                <img src="media/HDD_Small.svg">
+                <h3>Minimal Distro</h3>
+                <p>The minimum you need to get started with cloud computing</p>
+              </div>
+            </div>
+            <p>Or use the <a disabled title="Coming Soon">Torrent</a></p>
+          </div><!--
+        --><div class="col3">
+            <a href="https://github.com/delta1512/BOINCOS/releases"><div class="downloaddiv">
+              <div class="inner">
+                <img src="media/HDD_Normal.svg">
+                <h3>Standard Distro</h3>
+                <p>A more standard linux ISO including the BOINC software</p>
+              </div>
+            </div></a>
+            <p>Or use the <a disabled title="Coming Soon">Torrent</a></p>
+          </div><!--
+        --><div class="col3">
+            <div class="downloaddiv">
+              <div class="inner disabled">
+                <img src="media/HDD_Large.svg">
+                <h3>Full Package Distro</h3>
+                <p>Extra software and packages for power-users</p>
+              </div>
+            </div>
+            <p>Or use the <a disabled title="Coming Soon">Torrent</a></p>
+          </div>
+
+          <br><br>
+          <p style="text-align: center; padding-bottom: 76px;">What next?</p>
+          <a href="#information" class="cta_arrow inverted"></a>
+        </div>
+      </div>
+      <div class="wrapper" style="background-color: #dedede">
+        <div class="content" id="information">
+          <div class="rowimg2">
+            <img src="media/site_infographic1.svg" class="firstinfo"><!--
+          --><img src="media/site_infographic2.svg" class="secondinfo">
+          </div><!--
+        --><div class="rowimg2" style="margin-top: -6px;"><!--
+          --><img src="media/site_infographic3.svg" class="thirdinfo"><!--
+          --><img src="media/site_infographic4.svg" class="fourthinfo">
+          </div>
+          <p style="text-align: center;"><a href="https://docs.google.com/document/d/1sGo0AQ3GbwC6zZFq_q7FOZMHOZOwBphvWPLrsoirwP4/edit">Read the Documentation</a></p>
+        </div>
+        <div class="content">
+          <h2>Developers and Contributors</h2>
+          <p><a href="https://github.com/delta1512">Delta</a> and <a href="https://github.com/Aurailus">Benjamin Collings</a> are the original founders of the BOINCOS project, but the project would not be here without the <a href="https://github.com/delta1512/BOINCOS/blob/master/Contributors.md">contributors</a> and community that aided and motivated development.</p>
+
+          <p>The project has a GitHub repository that is used for any scripts and files used by the OS as well as current issues which can be found <a href="https://github.com/delta1512/BOINCOS">here</a>.</p>
+
+          <p>For getting started, it is recommended reading the <a href="https://github.com/delta1512/BOINCOS/tree/master/Documentation">user manual</a> for the relevant version being used.</p>
+          
+          <a class="git link" href="https://github.com/delta1512/BOINCOS/">View on Github</a><br>
+          <a class="steem link" href="https://steemit.com/@delta1512">Talk on Steemit</a>
+        </div>
+
+        <div class="content" style="margin-top: 32px; margin-bottom: 8px;">
+          <p><small style="font-size: 0.9em">Website by <a style="color: #333" href="https://aurailus.design/?referrer=boincos">Aurailus Design</a> &mdash; &copy; 2017.</small></p>
+        </div>
+      </div>
+    </main>
+    <footer>
+    </footer>
+  </body>
+</html>
+<script>
+$(document).on('click', 'a[href^="#"]', function(e) {
+    var id = $(this).attr('href');
+    var $id = $(id);
+    if ($id.length === 0) {
+        return false;
+    }
+    e.preventDefault();
+    var pos = $id.offset().top;
+    $('body, html').animate({scrollTop: pos}, 1000, "swing");
+});
+</script>
