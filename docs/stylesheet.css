@@ -238,10 +238,10 @@ main {
     background-color: #bbb; }
   /* line 265, stylesheet.scss */
   .link.git {
-    background-image: url("media/steem.svg"); }
+    background-image: url("media/code.svg"); }
   /* line 269, stylesheet.scss */
   .link.steem {
-    background-image: url("media/code.svg"); }
+    background-image: url("media/steem.svg"); }
 
 /* line 273, stylesheet.scss */
 .hoverpic {
