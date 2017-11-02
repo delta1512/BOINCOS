@@ -26,7 +26,7 @@ Web developer for the BOINCOS official website.
 
 ---
 
-### Foxifi (Space Dollars Founder)
+### Foxifi
 
 Generous initial donator and supporter of the project.
 #### Donations
