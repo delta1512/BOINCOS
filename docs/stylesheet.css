@@ -147,9 +147,11 @@ main {
           position: relative;
           opacity: 0;
           top: 30px;
+          margin-bottom: 0px;
+          margin-top: 4px;
           transition: top 0.2s, opacity 0.2s;
           color: #000; }
-        /* line 166, stylesheet.scss */
+        /* line 168, stylesheet.scss */
         main .content .downloaddiv .inner img {
           width: 50%;
           height: 50%;
@@ -157,34 +159,34 @@ main {
           top: 40px;
           position: relative;
           transition: top 0.2s; }
-        /* line 175, stylesheet.scss */
+        /* line 177, stylesheet.scss */
         main .content .downloaddiv .inner:not(.disabled):hover img {
           filter: brightness(1.2);
           top: 10px; }
-        /* line 179, stylesheet.scss */
+        /* line 181, stylesheet.scss */
         main .content .downloaddiv .inner:not(.disabled):hover h3 {
           top: -10px;
           color: #fff; }
-        /* line 183, stylesheet.scss */
+        /* line 185, stylesheet.scss */
         main .content .downloaddiv .inner:not(.disabled):hover p {
           top: -10px;
           opacity: 1;
           color: #fff; }
-        /* line 189, stylesheet.scss */
+        /* line 191, stylesheet.scss */
         main .content .downloaddiv .inner.disabled {
           opacity: 0.5;
           color: #eee;
           cursor: not-allowed; }
-    /* line 197, stylesheet.scss */
+    /* line 199, stylesheet.scss */
     main .content a:nth-of-type(1) .downloaddiv:hover {
       background-color: #BA8326; }
-    /* line 202, stylesheet.scss */
+    /* line 204, stylesheet.scss */
     main .content a:nth-of-type(1) .downloaddiv:hover {
       background-color: #265581; }
-    /* line 206, stylesheet.scss */
+    /* line 208, stylesheet.scss */
     main .content a:nth-of-type(3) .downloaddiv:hover {
       background-color: #1281AB; }
-  /* line 211, stylesheet.scss */
+  /* line 213, stylesheet.scss */
   main .cta_arrow {
     position: absolute;
     bottom: 12px;
@@ -202,10 +204,10 @@ main {
     cursor: pointer;
     animation: hop 2s ease 0s infinite;
     transition: transform 0.1s; }
-    /* line 229, stylesheet.scss */
+    /* line 231, stylesheet.scss */
     main .cta_arrow:hover {
       transform: scale(1.3); }
-    /* line 233, stylesheet.scss */
+    /* line 235, stylesheet.scss */
     main .cta_arrow.inverted {
       filter: brightness(0.15) drop-shadow(0px 1px 6px black); }
 @keyframes hop {
@@ -217,7 +219,7 @@ main {
     bottom: 22px; }
   50% {
     bottom: 12px; } }
-/* line 245, stylesheet.scss */
+/* line 247, stylesheet.scss */
 .link {
   background-color: #ccc;
   padding: 8px 8px;
@@ -233,17 +235,17 @@ main {
   text-decoration: none;
   color: #333;
   transition: background-color 0.2s, color 0.2s; }
-  /* line 261, stylesheet.scss */
+  /* line 263, stylesheet.scss */
   .link:hover {
     background-color: #bbb; }
-  /* line 265, stylesheet.scss */
+  /* line 267, stylesheet.scss */
   .link.git {
     background-image: url("media/code.svg"); }
-  /* line 269, stylesheet.scss */
+  /* line 271, stylesheet.scss */
   .link.steem {
     background-image: url("media/steem.svg"); }
 
-/* line 273, stylesheet.scss */
+/* line 275, stylesheet.scss */
 .hoverpic {
   width: 128px;
   height: 128px;
@@ -251,7 +253,7 @@ main {
   border-radius: 50%;
   display: inline-block;
   position: relative; }
-  /* line 281, stylesheet.scss */
+  /* line 283, stylesheet.scss */
   .hoverpic p {
     color: #fff;
     opacity: 0;
@@ -262,11 +264,11 @@ main {
     transition: opacity 0.2s;
     margin: 0;
     font-size: 1.3em; }
-  /* line 293, stylesheet.scss */
+  /* line 295, stylesheet.scss */
   .hoverpic:hover p {
     opacity: 1;
     text-shadow: 0px 0px 7px #000; }
-  /* line 298, stylesheet.scss */
+  /* line 300, stylesheet.scss */
   .hoverpic + div > p {
     margin: 8px 0px 12px 8px; }
 
