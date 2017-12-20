@@ -1,0 +1,14 @@
+#!/bin/bash
+# Firewallset: A script to enable and disable the firewall, called by BOINCOS helper.
+# Author: Delta
+
+if [ "$1" = 'on' ]; then
+	sudo ufw enable
+	sudo ufw default deny
+	sudo ufw allow SSH
+	sudo ufw allow 31416
+elif [ "$1" = 'off' ]; then
+	sudo ufw disable
+else
+	echo "Invalid arguments passed to firewallset"
+fi
