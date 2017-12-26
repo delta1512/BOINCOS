@@ -139,6 +139,7 @@ main {
 			margin: 1%;
 			display: inline-block;
 			background-color: #ccc;
+			overflow: hidden;
 
 			.inner {
 				width: 100%;
@@ -146,6 +147,7 @@ main {
 				position: absolute;
 				padding: 8px;
 				text-align: center;
+				overflow: hidden;
 
 				h3 { 
 					font-size: 1.4em; 
@@ -173,6 +175,10 @@ main {
 					position: relative;
 					transition: top 0.2s;
 				}
+				small {
+					opacity: 0.8;
+				}
+
 				&:not(.disabled):hover {
 					img {
 						filter: brightness(1.2);
@@ -183,7 +189,7 @@ main {
 						color: #fff;
 					}
 					p {
-						top: -10px;
+						top: -30px;
 						opacity: 1;
 						color: #fff;
 					}
@@ -196,16 +202,15 @@ main {
 			}
 		}
 
-		a:nth-of-type(1) .downloaddiv:hover {
+		.col3:nth-of-type(1) a .downloaddiv:hover {
 			background-color: #BA8326;
 		}
 
-		/*Set to 2 when minimal is done*/
-		a:nth-of-type(1) .downloaddiv:hover {
+		.col3:nth-of-type(2) a .downloaddiv:hover {
 			background-color: #265581;
 		}
 
-		a:nth-of-type(3) .downloaddiv:hover {
+		.col3:nth-of-type(3) a .downloaddiv:hover {
 			background-color: #1281AB;
 		}
 	}
