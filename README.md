@@ -28,7 +28,9 @@ A Bittorrent link will be coming soon!
 
 - A non-legacy (compliant with drivers) Intel, AMD or Nvidia graphics card
 
-- At least an 8GB USB or hard drive
+- At least an 4GB USB or hard drive
+
+- An internet connection
 
 ## Founders
 
