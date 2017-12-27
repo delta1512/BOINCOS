@@ -1,0 +1,16 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+# Friendlier looking bash prompt
+PS1='\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+if [ "$(grep no /home/boincuser/.helper.opt)" = "no" ]; then
+        echo Welcome to BOINC OS Minimal!
+else
+        python boincos-helper
+fi
