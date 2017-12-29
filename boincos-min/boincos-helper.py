@@ -6,6 +6,9 @@ Authors:
 '''
 
 from shutil import get_terminal_size
+from boinc import boinc_help
+from monitoring import  monitoring_tools
+from firewall import fw_config
 from netcfg import net_config
 from sys import exit
 import curses
@@ -15,14 +18,14 @@ UP = curses.KEY_UP
 DN = curses.KEY_DOWN
 LT = curses.KEY_LEFT
 RT = curses.KEY_RIGHT
+# Fast function definitions to check user selection
 BOINC_SEL = lambda cursor: cursor == [4, 3]
 MONITOR_SEL = lambda cursor: cursor == [6, 3]
 FIREW_SEL = lambda cursor: cursor == [8, 3]
 NET_SEL = lambda cursor: cursor == [10, 3]
 YES_SEL = lambda cursor: cursor == [9, 43]
 NO_SEL = lambda cursor: cursor == [9, 56]
-#OPT_DIR = '/home/boincuser/.helper.opt'
-OPT_DIR = '/tmp/helpopts'
+OPT_DIR = '/home/boincuser/.helper.opt'
 selection = None
 cursor = [4, 3] # y, x
 radio_stateY = 'X'
@@ -94,10 +97,13 @@ while selection != ord('q'):
     elif (selection == ord(' ')): # Handle selection
         if BOINC_SEL(cursor):
             curses.endwin()
+            exit(boinc_help())
         elif MONITOR_SEL(cursor):
             curses.endwin()
+            exit(monitoring_tools())
         elif FIREW_SEL(cursor):
             curses.endwin()
+            fw_config()
         elif NET_SEL(cursor):
             curses.endwin()
             exit(net_config())
