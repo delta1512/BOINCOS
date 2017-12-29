@@ -12,7 +12,7 @@ UP = curses.KEY_UP
 DN = curses.KEY_DOWN
 
 ### START CODE ###
-def monitoring():
+def monitoring_tools():
     # Initiate screen variables
     selection = None
     cursor = [4, 3]
