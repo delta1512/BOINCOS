@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# BOINCOS init and control script.
+# Controls the python curses interface and provides interactive accessibility to typical OS functionality
+# Authors:
+#   - Delta
+
+while [ choice != 0 ]; do
+        python /opt/helper/boincos-helper
+        case $? in
+          1   )   exec boinctui;;
+          2   )   exec sudo systemctl restart boinc;;
+          3   )   exec htop;;
+          4   )   exec bmon;;
+          5   )   exec sudo netctl restart eth;;
+          6   )   exec sudo wifi-menu;;
+        esac
+done
