@@ -3,6 +3,7 @@
 # Author: Delta
 
 if [ "$1" = 'on' ]; then
+	sudo ufw reset
 	sudo ufw enable
 	sudo ufw default deny
 	sudo ufw allow SSH
