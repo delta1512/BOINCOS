@@ -6,7 +6,7 @@
 #   - Delta
 
 while [ choice != 0 ]; do
-        python /opt/helper/boincos-helper
+        python /opt/helper/boincos-helper.py
         case $? in
           1   )   exec boinctui;;
           2   )   exec sudo systemctl restart boinc;;
