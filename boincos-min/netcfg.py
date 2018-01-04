@@ -25,8 +25,8 @@ def net_config():
         # Add all components to display
         # Navigation labels and buttons
         screen.addstr(1, 1, 'Network Configuration:')
-        screen.addstr(4, 3, '—>\t Ethernet: Reset connection state ')
-        screen.addstr(6, 3, '—>\t Wi-Fi: Setup Wi-Fi network')
+        screen.addstr(4, 3, '->\t Ethernet: Reset connection state ')
+        screen.addstr(6, 3, '->\t Wi-Fi: Setup Wi-Fi network')
         screen.refresh()
         # Fetch and handle user selection
         selection = screen.getch(cursor[0], cursor[1])

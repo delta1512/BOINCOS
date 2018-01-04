@@ -5,7 +5,6 @@ Authors:
   - Delta
 '''
 
-from shutil import get_terminal_size
 from boinc import boinc_help
 from monitoring import  monitoring_tools
 from firewall import fw_config
@@ -30,7 +29,6 @@ selection = None
 cursor = [4, 3] # y, x
 radio_stateY = 'X'
 radio_stateN = 'o'
-screen_size = get_terminal_size() # Get the size of the current terminal
 start_at_login = False
 
 ### FUNCTIONS ###
@@ -58,16 +56,16 @@ while selection != ord('q'):
     # Add all components to display
     # Navigation labels and buttons
     screen.addstr(1, 1, 'Welcome to BOINC OS Helper. Use arrow keys and spacebar to navigate, press q to quit.')
-    screen.addstr(4, 3, '—>\t BOINC ')
-    screen.addstr(6, 3, '—>\t Monitoring tools')
-    screen.addstr(8, 3, '—>\t Firewall configuration')
-    screen.addstr(10, 3, '—>\t Network configuration')
+    screen.addstr(4, 3, '->\t BOINC ')
+    screen.addstr(6, 3, '->\t Monitoring tools')
+    screen.addstr(8, 3, '->\t Firewall configuration')
+    screen.addstr(10, 3, '->\t Network configuration')
     # Radio button labels
     screen.addstr(4, 40, 'Start BOINC OS Helper')
     screen.addstr(5, 45, 'at login:')
     screen.addstr(7, 43, 'Y' + (' ' * 12) + 'N')
     # Radio Buttons
-    screen.addstr(8, 42, '.—.' + (' ' * 10) + '.—.')
+    screen.addstr(8, 42, '.-.' + (' ' * 10) + '.-.')
     # Determine the states of the options
     if start_at_login:
         radio_stateY = 'X'
@@ -76,7 +74,7 @@ while selection != ord('q'):
         radio_stateY = 'o'
         radio_stateN = 'X'
     screen.addstr(9, 42, '|' + radio_stateY + '|' + (' ' * 10) + '|' + radio_stateN + '|')
-    screen.addstr(10, 42, '\'—\'' + (' ' * 10) + '\'—\'')
+    screen.addstr(10, 42, '\'-\'' + (' ' * 10) + '\'-\'')
     screen.refresh() # Display components
     # Handle user selection/navigation
     selection = screen.getch(cursor[0], cursor[1])

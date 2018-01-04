@@ -25,8 +25,8 @@ def boinc_help():
         # Add all components to display
         # Navigation labels and buttons
         screen.addstr(1, 1, 'BOINC Tools:')
-        screen.addstr(4, 3, '—>\t BOINC Manager')
-        screen.addstr(6, 3, '—>\t Restart BOINC')
+        screen.addstr(4, 3, '->\t BOINC Manager')
+        screen.addstr(6, 3, '->\t Restart BOINC')
         screen.addstr(8, 3, 'X\t Tutorial')
         screen.refresh()
         # Fetch and handle user selection

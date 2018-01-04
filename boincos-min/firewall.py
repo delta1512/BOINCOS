@@ -56,9 +56,9 @@ def fw_config():
         # Add all components to display
         # Navigation labels and buttons
         screen.addstr(1, 1, 'Firewall Configuration:')
-        screen.addstr(4, 3, '—>\t Current firewall state')
-        screen.addstr(6, 3, '—>\t Add firewall rules')
-        screen.addstr(8, 3, '—>\t Revert to defaults')
+        screen.addstr(4, 3, '->\t Current firewall state')
+        screen.addstr(6, 3, '->\t Add firewall rules')
+        screen.addstr(8, 3, '->\t Revert to defaults')
         screen.refresh()
         # Fetch and handle user selection
         selection = screen.getch(cursor[0], cursor[1])
