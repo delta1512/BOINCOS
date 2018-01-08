@@ -40,6 +40,7 @@ useradd -m boincuser
 groupadd sudo
 usermod -a -G sudo boicuser
 chmod u+w sudoers
+cp sudoers sudoers.bak
 echo >> sudoers
 echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> sudoers
 chmod -w sudoers
