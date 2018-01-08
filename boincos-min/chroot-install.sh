@@ -25,7 +25,7 @@ echo "::1          localhost.localdomain	localhost" >> hosts
 echo "127.0.1.1    BOINCOS-MIN.localdomain	localhost" >> hosts
 
 echo
-echo "Installing required packages..."
+echo "Installing initial packages..."
 
 pacman -S efibootmgr grub wpa_supplicant dialog intel-ucode sudo
 
@@ -41,7 +41,7 @@ groupadd sudo
 usermod -a -G sudo boicuser
 chmod u+w sudoers
 echo >> sudoers
-echo "%sudo ALL=(ALL) ALL" >> sudoers
+echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> sudoers
 chmod -w sudoers
 
 echo
