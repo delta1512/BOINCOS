@@ -45,7 +45,70 @@ cp examples/ethernet-dhcp eth
 cd /
 echo -e "<cc_config>\n\t<options>\n\t\t<use_all_gpus>1</use_all_gpus>\n\t</options>\n</cc_config>" \
         | sudo tee /var/lib/boinc/cc_config.xml
+echo -e "[Unit]
+Description=BOINC Daemon\n
+[Service]
+User=boinc
+Nice=19
+ExecStart=/usr/bin/boinc_client --dir /var/lib/boinc --redirectio --allow_gui_rpc\n
+[Install]
+WantedBy=multi-user.target" | sudo tee /var/lib/systemd/system/boinc.service
+cd /tmp/
+git clone https://github.com/delta1512/BOINCOS.git
+cd BOINCOS/boincos-min/
+sudo mkdir /opt/helper/
+sudo chown -R boincuser:boincuser /opt/helper/
+mv *.py /opt/helper/
+mv fwset /usr/bin/
+mv boincos-helper /usr/bin/
+mv bashrc /home/boincuser/bashrc
+sudo chmod +x /usr/bin/fwset /usr/bin/boincos-helper
+sudo chmod -R -w /opt/helper/
+sudo chmod -R +rx /opt/helper/
+cd /usr/bin/
+sudo ln -sf python python2
+cd /
 sudo systemctl enable boinc
 sudo systemctl enable sshd
 sudo netctl enable eth
-sudo ufw enable
+fwset reset
+fwset on
+
+echo
+echo "Initialising and configuring BOINC..."
+
+sudo systemctl start boinc
+sudo usermod -a -G boinc boincuser
+cd /var/lib/
+sleep(120) # Wait for the BOINC client to generate all necessary files
+echo "boincos" | sudo tee boinc/gui_rpc_auth.cfg
+sudo chown -R boinc:boinc boinc/
+sudo chmod -R ug+rw boinc/
+cd /
+
+echo
+echo "Cleaning up installation..."
+
+sudo pacman -Scc
+sudo rm /etc/netctl/wifi
+sudo journalctl --flush --rotate
+sudo journalctl --vacuum-size=1M
+echo > /home/boincuser/.bash_history
+echo | sudo tee /root/.bash_history
+
+echo
+echo "Moving to final securiity steps..."
+
+read -p "Perform security lockout? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  sudo passwd -l root
+  cd /etc/
+  sudo chmod u+w sudoers
+  sudo mv sudoers.bak sudoers
+  echo "%sudo ALL=(ALL) NOPASSWD: /usr/bin/pacman -Syu,/usr/bin/reboot,/usr/bin/shutdown,/usr/bin/ufw,/usr/bin/systemctl" \
+  | sudo tee -a sudoers
+  sudo chmod -w sudoers
+  cd /
+else
+  exit 0
+fi
