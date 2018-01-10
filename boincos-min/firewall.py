@@ -11,7 +11,6 @@ import curses
 ### DEFINITIONS ###
 UP = curses.KEY_UP
 DN = curses.KEY_DOWN
-FW_RULES_DIR = '/opt/helper/fw_rules'
 
 ### FUNCTIONS ###
 # Check ip address function for ensuring correct ipv4 address structure
@@ -101,12 +100,12 @@ def fw_config():
                     screen.addstr(6, 3, 'Specify origin address (leave blank for anywhere):')
                     screen.refresh()
                     port = screen.getstr(4, 25, 5)
-                    try:
+                    try: # Perform validation
                         done = done and (0 < int(port) < 65536)
                     except:
                         done = done and False
                     ip = screen.getstr(6, 54, 15)
-                    if len(ip) > 0:
+                    if len(ip) > 0: # Perform validation
                         done = done and (7 <= len(ip) <= 18) and check_addr(ip)
                     else:
                         ip = 'Anywhere'
@@ -116,31 +115,31 @@ def fw_config():
                 # Move to the command-line screen
                 screen.clear()
                 screen.border(0)
-                screen.addstr(1, 2, 'Attempting to set firewall rule...')
+                screen.addstr(1, 2, 'Attempting to add firewall rule...')
                 screem.refresh()
                 # Compute a specific line of UFW code
                 if ip == 'Anywhere':
-                    line = 'sudo ufw allow ' + port
+                    exit_code = subprocess.call('sudo ufw allow ' + port, shell=True)
                 else:
-                    line = 'sudo ufw allow from ' + ip + 'to any port ' + port
-                try: # Try/catch in case the file is somehow inaccessible
-                    with open(FW_RULES_DIR, 'a') as fw_rules:
-                        fw_rules.write(line + '\n') # Append the lines to the rules program
-                    screen.addstr(2, 2, 'Successfully set port allow rule from ' + ip + 'to the port ' + port + '.')
-                except:
-                    screen.addstr(2, 2, 'A problem was encountered when attempting to write to the UFW rules file: ' + FW_RULES_DIR)
-                screen.addstr(3, 2, 'Press any button to continue...')
+                    exit_code = subprocess.call('sudo ufw allow from ' + ip + 'to any port ' + port, shell=True)
+                if exit_code == 0:
+                    screen.addstr(2, 2, 'Firewall rule added successfully.')
+                else:
+                    screen.addstr(2, 2, 'Firewall failed to add rule.')
+                screen.addstr(4, 2, 'Press any button to continue...')
                 screen.refresh()
                 screen.getch(3, 33) # Wait for any button
                 screen.noecho() # Return to original state
             elif (cursor[0] == 8):
                 screen.addstr(1, 2, 'Resetting firewall to defaults...')
                 screen.refresh()
+                subprocess.call('fwset off', shell=True)
                 exit_code = subprocess.call('fwset reset', shell=True) # Reset the firewall using fwset
                 if exit_code == 0:
                     screen.addstr(2, 2, 'Firewall was successfully reset to default rules.')
                 else:
-                    screen.addstr(2, 2, 'An error was encountered. Firewall failed to reset.')
+                    screen.addstr(2, 2, 'An error was encountered. Firewall failed to reset.\nAttempting to enable defaults...')
+                subprocess.call('fwset on', shell=True)
                 screen.addstr(3, 2, 'Press any button to continue...')
                 screen.refresh()
                 screen.getch(3, 33)

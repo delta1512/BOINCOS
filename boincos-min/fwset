@@ -5,7 +5,7 @@
 #		- Delta
 
 case $1 in
-	"on"		)		sudo ufw reset && sudo ufw enable && sudo ufw default deny && sudo ufw allow SSH && sudo ufw allow 31416;;
+	"on"		)		sudo ufw enable && sudo ufw default deny && sudo ufw allow SSH && sudo ufw allow 31416;;
 	"off"		)		sudo ufw disable;;
-	"reset"		)		cd /opt/helper && cp fw_rules fw_rules.bak && echo "#!/bin/bash" > fw_rules;;
+	"reset"		)		sudo ufw reset;;
 esac
