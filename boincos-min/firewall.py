@@ -52,12 +52,18 @@ def fw_config():
         screen.keypad(1)
         screen.clear()
         screen.border(0)
+        status_code = subprocess.call('sudo ufw status | grep inactive', shell=True)
+        if status_code > 0:
+            state = 'ON'
+        else:
+            state = 'OFF'
         # Add all components to display
         # Navigation labels and buttons
         screen.addstr(1, 1, 'Firewall Configuration:')
         screen.addstr(4, 3, '->\t Current firewall state')
-        screen.addstr(6, 3, '->\t Add firewall rules')
-        screen.addstr(8, 3, '->\t Revert to defaults')
+        screen.addstr(6, 3, '->\t Firewall: ' + state)
+        screen.addstr(8, 3, '->\t Add firewall rules')
+        screen.addstr(10, 3, '->\t Revert to defaults')
         screen.refresh()
         # Fetch and handle user selection
         selection = screen.getch(cursor[0], cursor[1])
@@ -89,6 +95,11 @@ def fw_config():
                 screen.refresh()
                 screen.getch(line_count+offset, 28) # Wait for any button
             elif (cursor[0] == 6):
+                if state == 'ON':
+                    subprocess.call('fwset off', shell=True)
+                else:
+                    subprocess.call('fwset on', shell=True)
+            elif (cursor[0] == 8):
                 curses.echo()
                 done = False
                 # Move into a new screen loop
@@ -130,7 +141,7 @@ def fw_config():
                 screen.refresh()
                 screen.getch(3, 33) # Wait for any button
                 screen.noecho() # Return to original state
-            elif (cursor[0] == 8):
+            elif (cursor[0] == 10):
                 screen.addstr(1, 2, 'Resetting firewall to defaults...')
                 screen.refresh()
                 subprocess.call('fwset off', shell=True)
