@@ -4,34 +4,24 @@ from shutil import copyfile
 chdir('/boot/grub')
 
 #backup():
-#backs up the contents of fileName to fileName.bak
+#Backs up the contents of "fileName" to /srv/fileName.bak
 def backup(fileName):
-    copyfile(fileName, '/' + fileName + '.bak')
+    copyfile(fileName, '/srv/' + fileName + '.bak')
 
-'''def changeBootEntryName(new_name, line):
-    current_name = ""
-    apostrophe_count = 0
-    for char in line:
-        if char == "'":
-            apostrophe_count += 1
-        if apostrophe_count > 0:
-            current_name += char
-            if apostrophe_count >= 2:
-                break
-    return line.replace(current_name, new_name)'''
-
+#writeListToFile()
+#Writes the contets of a list to a file defined by "directory"
 def writeListToFile(directory, data):
     with open(directory, 'w') as f:
         for line in data:
             f.write(line)
 
 #findEntry():
-#looks at the start of each line to find the term within the config
-#if found, find the associated curly bracket and do something with the code block
+#Looks at the start of each line to find the "term" within the config.
+#If found, find the associated curly brackets to define a code block.
 
-#if writeopt is true: it will remove that code block and rewrite the file
-#if writeopt is false: it will collect all corresponding code blocks and
-#return them, diregarding the rest of the file and not writing anything
+#if writeopt is True: it will remove that code block and rewrite the file
+#if writeopt is False: it will collect all corresponding code blocks and
+#                       return them, does not write anything.
 def findEntry(term, writeopt):
     temporaryFile = []
     with open('grub.cfg', 'r') as grubCFG:
@@ -60,6 +50,7 @@ def findEntry(term, writeopt):
         return temporaryFile
 
 #entryPostProcess():
+#Modifies a grub menuentry name and optionally sets nomodeset flag on kernel params
 def entryPostProcess(entry, boot_name, nomodeset):
     for i, line in enumerate(entry):
         if line[:9] == 'menuentry':
@@ -69,6 +60,8 @@ def entryPostProcess(entry, boot_name, nomodeset):
                 entry[i] = line[:len(line)-1] + ' nomodeset\n'
     return entry
 
+#reconstructGrubCFG()
+#Takes the stripped grub.cfg and appends the passed "entries" before updating the file
 def reconstructGrubCFG(entries):
     temporaryFile = []
     with open('grub.cfg', 'r') as grubCFG:
@@ -81,13 +74,12 @@ def reconstructGrubCFG(entries):
                 temporaryFile.append(line)
     writeListToFile('grub.cfg', temporaryFile)
 
-backup('grub.cfg')
-findEntry('submenu', True)
-default_entry = findEntry('menuentry', False)
-backup_entry = findEntry('menuentry', False)
-findEntry('menuentry', True)
+backup('grub.cfg') # First backup the original config, just incase
+findEntry('submenu', True) # Remove the default submenu and corresponding entries
+default_entry = findEntry('menuentry', False) # Define the default
+backup_entry = findEntry('menuentry', False) # Re-define the default to solve variable reference bug
+findEntry('menuentry', True) # Remove the remaining menuentry
+# Generate required menuentries from default templates
 final_entry = entryPostProcess(default_entry, "'BOINCOS'", False)
 final_entry1 = entryPostProcess(backup_entry, "'BOINCOS - KMS failure fallback'", True)
-#writeListToFile('/tmp/test.cfg', entryPostProcess(default_entry, "'BOINCOS'", False))
-#writeListToFile('/tmp/test.cfg.1', entryPostProcess(backup, "'BOINCOS - KMS failure fallback'", True))
-reconstructGrubCFG(final_entry + final_entry1)
+reconstructGrubCFG(final_entry + final_entry1) # Merge and write them to the config
