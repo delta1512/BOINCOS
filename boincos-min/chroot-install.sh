@@ -29,9 +29,17 @@ echo "Installing initial packages..."
 
 pacman -S efibootmgr grub wpa_supplicant dialog intel-ucode sudo
 
+echo
 echo "Installing grub for uefi..."
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=BOINCOS --removable --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
+
+echo
+echo "Downloading grub configuration script..."
+cd /tmp/
+wget https://raw.githubusercontent.com/delta1512/BOINCOS/master/cross-distro/grub_configure.py
+echo "Executing script..."
+python3 grub_configure.py
 
 echo
 echo "Setting user accounts and appending sudoers..."
