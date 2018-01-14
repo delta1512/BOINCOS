@@ -13,9 +13,10 @@ fi
 
 echo "Installing all packages..."
 
-sudo pacman -S htop bmon sudo openssh ufw lm_sensors netcat screen boinc-nox \
-                boinctui git base-devel xf86-video-intel xf86-video-amdgpu \
-                xf86-video-ati nvidia opencl-mesa opencl-nvidia ocl-icd
+sudo pacman -S --needed htop bmon sudo openssh ufw lm_sensors netcat screen \
+                boinc-nox boinctui git base-devel xf86-video-intel \
+                xf86-video-amdgpu xf86-video-ati nvidia opencl-mesa \
+                opencl-nvidia ocl-icd
 
 echo
 echo 'Fetching Intel OpenCL sources and dependencies...'
@@ -72,7 +73,7 @@ sudo systemctl enable boinc
 sudo systemctl enable sshd
 sudo netctl enable eth
 fwset reset
-fwset on
+fwset off
 
 echo
 echo "Initialising and configuring BOINC..."
