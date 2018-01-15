@@ -56,7 +56,7 @@ while selection != ord('q'):
     # Add all components to display
     # Navigation labels and buttons
     screen.addstr(1, 1, 'Welcome to BOINC OS Helper. Use arrow keys and spacebar to navigate, press q to quit.')
-    screen.addstr(4, 3, '->\t BOINC ')
+    screen.addstr(4, 3, '->\t BOINC')
     screen.addstr(6, 3, '->\t Monitoring tools')
     screen.addstr(8, 3, '->\t Firewall configuration')
     screen.addstr(10, 3, '->\t Network configuration')

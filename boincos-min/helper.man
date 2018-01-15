@@ -1,0 +1,50 @@
+BOINC OS helper
+        BOINC OS Helper is a program that contains a suite of functionality that aims to guide the user through
+        various usage cases and configuration of their system.
+
+Starting the Helper
+        The helper can be executed by typing "boincos-helper" into the terminal, else it will execute upon first
+        login. The start at login option can be toggled on the first screen of the helper by pressing the
+        appropriate radio button located to the right.
+
+Navigating the Helper
+        By default, to navigate options, simply use the arrow keys and at any point, press "q" to quit or move
+        back a screen. In some cases the program will execute another piece of software on the system which
+        will change the keys used to operate the interface to that of the program executed.
+
+Helper Screens:
+BOINC
+        Anything to do with configuring BOINC can be found here and includes accessing the BOINC manager,
+        restarting the BOINC client and changing the password for RPC.
+
+        In order to utilise the BOINC manager for the system, ensure the host is "127.0.0.1", port is default
+        (31416) and the password is that which was set via the password change option. Else search for the
+        default password within the BOINC OS documentation located in the GitHub repository:
+        https://github.com/delta1512/BOINCOS/tree/master/Documentation
+
+Monitoring tools
+        Provides links to programs that are helpful for observing system usage statistics (bmon and htop). Also
+        provides a session report tool that allows for the generation of a report to be performed for the
+        current session regarding computer statistics (CPU, net, disk, etc).
+
+Firewall configuration
+        Tools to configure firewall rules and functionality. Allows for monitoring of the current firewall
+        state, toggling of the firewall, configuration of rules and resetting.
+
+        Note: The firewall configuration tool only works for ipv4 addresses.
+
+Network configuration
+        Allows reconfiguration of ethernet and connection of Wi-Fi to the system. If any networking fault is
+        encountered, it is advised to use these functions as proper configuration techniques unless
+        technically inclined.
+
+        To check for network, run "ping" in your terminal.
+        E.g "ping -c 3 archlinux.org"
+
+Contributors
+        Author of this manual page:                     Delta
+        Authors of the BOINC OS Helper software:        Delta
+
+        Other contributors of this project and details about how to donate can be found on the contributors list
+        within the GitHub repository:
+        https://github.com/delta1512/BOINCOS/blob/master/Contributors.md

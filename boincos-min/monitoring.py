@@ -27,7 +27,7 @@ def monitoring_tools():
         screen.addstr(1, 1, 'Monitoring tools:')
         screen.addstr(4, 3, '->\t HTOP: CPU/Memory usage and processes')
         screen.addstr(6, 3, '->\t BMON: Network usage')
-        screen.addstr(8, 3, '->\t Generate session report')
+        screen.addstr(8, 3, 'X>\t Generate session report')
         screen.refresh()
         # Fetch and handle user selection
         selection = screen.getch(cursor[0], cursor[1])

@@ -5,6 +5,11 @@
 # Authors:
 #   - Delta
 
+if [ $1 == "--help" ]; then
+  exec less /opt/helper/helper.man
+  exit 0
+fi
+
 bash exit 0 # Make $? equal to 0 so that the while loop will be entered
 
 while [ $? != 0 ]; do
@@ -14,11 +19,16 @@ while [ $? != 0 ]; do
           2   )   exec sudo systemctl restart boinc;;
           3   )   exec htop;;
           4   )   exec bmon;;
-          5   )   sudo netctl disable eth && echo -e "$(grep -v Interface /etc/netctl/examples/ethernet-dhcp)\nInterface=$(ls -w 1 /sys/class/net | head -n 1)" > /etc/netctl/eth && sudo netctl enable eth && sudo netctl start eth;;
+          5   )   sudo netctl stop eth
+                  sudo netctl disable eth
+                  echo -e "$(grep -v Interface /etc/netctl/examples/ethernet-dhcp)\nInterface=$(ls -w 1 /sys/class/net | head -n 1)" > /etc/netctl/eth
+                  sudo netctl enable eth
+                  sudo netctl start eth
+                  ;;
           6   )   exec sudo wifi-menu;;
+          7   )   exec less /opt/helper/helper.man;;
         esac
 done
 
-# Case 5 is a one-liner for taking the netctl ethernet example config and
-# appending the current ethernet interface to it. Netctl is stopped, renabled
-# and restarted throughout the process.
+# Case 5 echo statement is a one-liner for taking the netctl ethernet example
+# config and appending the current ethernet interface to it.

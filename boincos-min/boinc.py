@@ -27,13 +27,12 @@ def boinc_help():
         screen.addstr(1, 1, 'BOINC Tools:')
         screen.addstr(4, 3, '->\t BOINC Manager')
         screen.addstr(6, 3, '->\t Restart BOINC')
-        screen.addstr(8, 3, 'X\t Tutorial')
         screen.refresh()
         # Fetch and handle user selection
         selection = screen.getch(cursor[0], cursor[1])
-        if (selection == UP) and (4 < cursor[0] <= 8):
+        if (selection == UP) and (4 < cursor[0] <= 6):
             cursor[0] -= 2
-        elif (selection == DN) and (4 <= cursor[0] < 8):
+        elif (selection == DN) and (4 <= cursor[0] < 6):
             cursor[0] += 2
         elif (selection == ord(' ')):
             curses.endwin()
@@ -41,5 +40,3 @@ def boinc_help():
                 return 1 # Return case for starting boinctui
             elif (cursor[0] == 6):
                 return 2 # Return case for restarting BOINC
-            elif (cursor[0] == 8):
-                pass # Placeholder for help information in using boinc and boinctui
