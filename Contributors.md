@@ -35,6 +35,4 @@ Generous initial donator and supporter of the project.
 |Coin        |Address                                   |
 |------------|:-----------------------------------------|
 |Gridcoin    |SG5t2ySH6dyxkXZ29jyUsvVkUSBUh5di4D        |
-|Bitcoin     |1EmLM851B3DSTfj7Gr4E5qxvG2gFxsBZp7        |
-|Litecoin    |LVJ4DrTAZCmVfK7P8j15LJNCtpat8ckhbR        |
-|Ethereum    |0x222567657b63c5aada2d790f51e474fbdd63e008|
+|Bitcoin     |1JQyGhBYJM1bBLRzo1yttSRk9cWgPVN7du        |
