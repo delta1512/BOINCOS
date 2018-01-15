@@ -9,8 +9,9 @@ Starting the Helper
 
 Navigating the Helper
         By default, to navigate options, simply use the arrow keys and at any point, press "q" to quit or move
-        back a screen. In some cases the program will execute another piece of software on the system which
-        will change the keys used to operate the interface to that of the program executed.
+        back a screen and press space to activate a function. In some cases the program will execute another
+        piece of software on the system which will change the keys used to operate the interface to that of the
+        program executed.
 
 Helper Screens:
 BOINC

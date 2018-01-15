@@ -22,6 +22,7 @@ BOINC_SEL = lambda cursor: cursor == [4, 3]
 MONITOR_SEL = lambda cursor: cursor == [6, 3]
 FIREW_SEL = lambda cursor: cursor == [8, 3]
 NET_SEL = lambda cursor: cursor == [10, 3]
+HELP_SEL = lambda cursor: cursor == [12, 3]
 YES_SEL = lambda cursor: cursor == [9, 43]
 NO_SEL = lambda cursor: cursor == [9, 56]
 OPT_DIR = '/home/boincuser/.helper.opt'
@@ -60,6 +61,7 @@ while selection != ord('q'):
     screen.addstr(6, 3, '->\t Monitoring tools')
     screen.addstr(8, 3, '->\t Firewall configuration')
     screen.addstr(10, 3, '->\t Network configuration')
+    screen.addstr(12, 3, '->\t Help')
     # Radio button labels
     screen.addstr(4, 40, 'Start BOINC OS Helper')
     screen.addstr(5, 45, 'at login:')
@@ -78,9 +80,9 @@ while selection != ord('q'):
     screen.refresh() # Display components
     # Handle user selection/navigation
     selection = screen.getch(cursor[0], cursor[1])
-    if (selection == UP) and (4 < cursor[0] <= 10) and (cursor[1] == 3):
+    if (selection == UP) and (4 < cursor[0] <= 12) and (cursor[1] == 3):
         cursor[0] -= 2
-    elif (selection == DN) and (4 <= cursor[0] < 10) and (cursor[1] == 3):
+    elif (selection == DN) and (4 <= cursor[0] < 12) and (cursor[1] == 3):
         cursor[0] += 2
     elif (selection == LT):
         if (cursor[1] == 56): # Move from 'no' to 'yes'
@@ -115,6 +117,8 @@ while selection != ord('q'):
             radio_stateY = 'o'
             radio_stateN = 'X'
             write_opts('no')
+        elif HELP_SEL(cursor):
+            exit(7)
 
 curses.endwin() # Close curses gracefully
 exit(0) # Return a quit signal to the bash script
