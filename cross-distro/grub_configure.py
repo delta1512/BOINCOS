@@ -6,7 +6,7 @@ chdir('/boot/grub')
 #backup():
 #Backs up the contents of "fileName" to /srv/fileName.bak
 def backup(fileName):
-    copyfile(fileName, '/srv/' + fileName + '.bak')
+    copyfile(fileName, '/root/' + fileName + '.bak')
 
 #writeListToFile()
 #Writes the contets of a list to a file defined by "directory"

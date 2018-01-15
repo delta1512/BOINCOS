@@ -54,6 +54,11 @@ Nice=19
 ExecStart=/usr/bin/boinc_client --dir /var/lib/boinc --redirectio --allow_gui_rpc\n
 [Install]
 WantedBy=multi-user.target" | sudo tee /var/lib/systemd/system/boinc.service
+cd /home/boincuser/
+echo "alias man boincos-helper='boincos-helper --help'
+alias boincos='boincos-helper --help'
+alias help='boincos-helper --help'
+alias ?='boincos-helper --help'"
 cd /tmp/
 git clone https://github.com/delta1512/BOINCOS.git
 cd BOINCOS/boincos-min/
@@ -63,6 +68,7 @@ mv *.py /opt/helper/
 mv fwset /usr/bin/
 mv boincos-helper /usr/bin/
 mv bashrc /home/boincuser/bashrc
+mv helper.man /opt/helper/
 sudo chmod +x /usr/bin/fwset /usr/bin/boincos-helper
 sudo chmod -R -w /opt/helper/
 sudo chmod -R +rx /opt/helper/
@@ -95,7 +101,8 @@ sudo rm /etc/netctl/wifi
 sudo journalctl --flush --rotate
 sudo journalctl --vacuum-size=1M
 echo > /home/boincuser/.bash_history
-echo | sudo tee /root/.bash_history
+sudo mv /root/sudoers.bak /tmp/
+sudo rm -rf /root/*
 
 echo
 echo "Moving to final securiity steps..."
@@ -105,7 +112,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   sudo passwd -l root
   cd /etc/
   sudo chmod u+w sudoers
-  sudo mv sudoers.bak sudoers
+  sudo mv /tmp/sudoers.bak sudoers
   echo "%sudo ALL=(ALL) NOPASSWD: /usr/bin/pacman -Syu,/usr/bin/reboot,/usr/bin/shutdown,/usr/bin/ufw,/usr/bin/systemctl" \
   | sudo tee -a sudoers
   sudo chmod -w sudoers

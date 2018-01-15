@@ -10,7 +10,7 @@ echo "Setting locales..."
 
 cd /etc/
 
-cp locale.gen locale.gen.bak
+cp locale.gen /root/locale.gen.bak
 echo "en_US.UTF-8 UTF-8" > locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > locale.conf
@@ -48,10 +48,16 @@ useradd -m boincuser
 groupadd sudo
 usermod -a -G sudo boicuser
 chmod u+w sudoers
-cp sudoers sudoers.bak
+cp sudoers /root/sudoers.bak
 echo >> sudoers
 echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> sudoers
 chmod -w sudoers
+
+echo
+echo "Fetching the next installation script..."
+
+cd /root/
+wget https://raw.githubusercontent.com/delta1512/BOINCOS/master/boincos-min/install.sh
 
 echo
 echo "Chroot install complete, please reset root and boincuser passwords"
