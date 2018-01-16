@@ -86,8 +86,17 @@ if len(argv) > 1: # If cmd arguments found, set them if correct
                 exit(1)
         elif arg == '--dump': # Fetch all data and write to file
             fetch_data()
+            exit(0)
 else: # Set defaults
     POLL_RATE = 3
+
+newpass = False
+with open('/var/lib/boinc/gui_rpc_auth.cfg', 'r') as RPC_pass_file:
+    if RPC_pass_file.read() == 'boincos':
+        newpass = True
+if newpass:
+    with open('/var/lib/boinc/gui_rpc_auth.cfg', 'w') as RPC_pass_file:
+        RPC_pass_file.write(subprocess.check_output('head -n 3 /dev/urandom | sha256sum', shell=True)[:8])
 
 sys_start_time = round(time.time())
 boinc_time = 0
