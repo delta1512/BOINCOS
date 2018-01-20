@@ -10,11 +10,10 @@ if [ "$1" == "--help" ]; then
   exit 0
 fi
 
-grep -s a b  # Make $? not equal to 0 so that the while loop will be entered
-
-while [ $? != 0 ]; do
+exit=0
+while [ $exit != 99 ]; do
         python /opt/helper/boincos-helper.py
-        case $? in
+        case $exit in
           1   )   exec boinctui;;
           2   )   exec sudo systemctl restart boinc;;
           3   )   exec htop;;
@@ -27,6 +26,7 @@ while [ $? != 0 ]; do
                   ;;
           6   )   exec sudo wifi-menu;;
           7   )   exec less /opt/helper/helper.man;;
+          exit=$?
         esac
 done
 

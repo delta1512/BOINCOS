@@ -118,7 +118,8 @@ while selection != ord('q'):
             radio_stateN = 'X'
             write_opts('no')
         elif HELP_SEL(cursor):
+            curses.endwin()
             exit(7)
 
 curses.endwin() # Close curses gracefully
-exit(0) # Return a quit signal to the bash script
+exit(99) # Return a quit signal to the bash script

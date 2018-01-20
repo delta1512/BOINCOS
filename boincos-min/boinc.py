@@ -37,10 +37,11 @@ def boinc_help():
         elif (selection == DN) and (4 <= cursor[0] < 8):
             cursor[0] += 2
         elif (selection == ord(' ')):
-            curses.endwin()
             if (cursor[0] == 4):
+                curses.endwin()
                 return 1 # Return case for starting boinctui
             elif (cursor[0] == 6):
+                curses.endwin()
                 return 2 # Return case for restarting BOINC
             elif (cursor[0] == 8):
                 pass_scrn_sel = None
