@@ -7,17 +7,36 @@ import subprocess
 import pickle
 import time
 
+### DEFINITIONS ###
+KB = 1000
+MB = 1000**2
+GB = 1000**3
+TB = 1000**4
+PB = 1000**5
+
 ### FUNCTIONS ###
 def write_polled_data(boinc_perct):
-    with open('/tmp/boinc_percent.dat', 'w') as datafile:
-        datafile.write(str(round(boinc_perct, 1)) + '%')
+    with open('/tmp/boinc_percent.dat', 'w') as data_file:
+        data_file.write(str(round(boinc_perct, 1)) + '%')
+
+def size_conv(val):
+    if 0 < val < KB:
+        return str(val) + ' B'
+    elif KB <= val < MB:
+        return str(round(val / KB, 1)) + ' KB'
+    elif MB <= val < GB:
+        return str(round(val / MB, 1)) + ' MB'
+    elif GB <= val < TB:
+        return str(round(val / GB, 1)) + ' GB'
+    elif TB <= val < PB:
+        return str(round(val / TB, 1)) + ' TB'
 
 def fetch_data():
     avg_cpu = ''
-    net_total_up, net_total_down = 0, 0
-    disk_perct_used, disk_free = 0, 0
-    temperature = ''
-    net_connect = False
+    net_total_up, net_total_down = '', ''
+    disk_perct_used, disk_free = '', ''
+    temperature = 'Unable to fetch temperature, consult user documentation'
+    net_connect = 'Not Connected'
     task_count = 0
     users, teams = [], []
     final_dictionary = {}
@@ -28,27 +47,28 @@ def fetch_data():
         for line in net_dev.readlines():
             line_arr = line.split()
             if line_arr[0].startswith('e') or line_arr[0].startswith('w'):
-                net_total_down += int(line_arr[1])
-                net_total_up += int(line_arr[9])
+                net_total_up = size_conv(int(line_arr[9]))
+                net_total_down = size_conv(int(line_arr[1]))
 
     raw_disk_data = subprocess.check_output('df -h /', shell=True).split()[10:12]
     disk_free = raw_disk_data[0]
     disk_perct_used = raw_disk_data[1]
 
     tmp = subprocess.check_output('sensors | grep Core', shell=True).split()
-    brack_open = False
-    for chars in tmp:
-        if '(' in chars:
-            brack_open = True
-        if not brack_open:
-            temperature += chars + ' '
-        if ')' in chars:
-            brack_open = False
-            temperature += '\n'
+    if len(tmp) > 1:
+        brack_open = False
+        for chars in tmp:
+            if '(' in chars:
+                brack_open = True
+            if not brack_open:
+                temperature += chars + ' '
+            if ')' in chars:
+                brack_open = False
+                temperature += '\n'
 
     exit_code = subprocess.call('ping -c 1 example.com', shell=True)
     if exit_code == 0:
-        net_connect = True
+        net_connect = 'Connected'
 
     slot_dirs = glob('/var/lib/boinc/slots/?')
     for slot in slot_dirs:
@@ -62,6 +82,8 @@ def fetch_data():
             if not slot_team in teams:
                 teams.append(slot_team)
 
+    with open('/tmp/boinc_percent.dat', 'r') as data_file:
+        final_dictionary['boinc_percent'] = data_file.read()
     final_dictionary['avg_cpu'] = avg_cpu
     final_dictionary['net_total_up'] = net_total_up
     final_dictionary['net_total_down'] = net_total_down
