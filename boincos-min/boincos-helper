@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# BOINCOS init and control script.
-# Controls the python curses interface and provides interactive accessibility to typical OS functionality
+# BOINC OS Helper init/control script.
+# Controls the python curses interface for the
 # Authors:
 #   - Delta
 
-if [ $1 == "--help" ]; then
+if [ "$1" == "--help" ]; then
   exec less /opt/helper/helper.man
   exit 0
 fi
 
-bash exit 0 # Make $? equal to 0 so that the while loop will be entered
+grep -s a b  # Make $? not equal to 0 so that the while loop will be entered
 
 while [ $? != 0 ]; do
         python /opt/helper/boincos-helper.py
@@ -30,5 +30,5 @@ while [ $? != 0 ]; do
         esac
 done
 
-# Case 5 echo statement is a one-liner for taking the netctl ethernet example
-# config and appending the current ethernet interface to it.
+# Case 5 echo statement takes the netctl ethernet example
+# config and appends the current ethernet interface to it.

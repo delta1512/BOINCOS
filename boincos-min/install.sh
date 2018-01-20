@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Script that finalises the system, to be run after reboot and chroot-install.sh
+# on a non-root user account
 # Authors:
 #   - Delta
 
@@ -64,16 +65,17 @@ git clone https://github.com/delta1512/BOINCOS.git
 cd BOINCOS/boincos-min/
 sudo mkdir /opt/helper/
 sudo chown -R boincuser:boincuser /opt/helper/
-mv *.py /opt/helper/
-mv fwset /usr/bin/
-mv boincos-helper /usr/bin/
-mv bashrc /home/boincuser/bashrc
-mv helper.man /opt/helper/
+sudo mv *.py /opt/helper/
+sudo mv fwset /usr/bin/
+sudo mv boincos-helper /usr/bin/
+mv bashrc /home/boincuser/.bashrc
+sudo mv helper.man /opt/helper/
 sudo chmod +x /usr/bin/fwset /usr/bin/boincos-helper
+sudo chmod -w /usr/bin/fwset /usr/bin/boincos-helper
 sudo chmod -R -w /opt/helper/
 sudo chmod -R +rx /opt/helper/
 cd /usr/bin/
-sudo ln -sf python python2
+sudo ln -sf python2.7 python
 cd /
 sudo systemctl enable boinc
 sudo systemctl enable sshd
@@ -105,7 +107,7 @@ sudo mv /root/sudoers.bak /tmp/
 sudo rm -rf /root/*
 
 echo
-echo "Moving to final securiity steps..."
+echo "Moving to final security steps..."
 
 read -p "Perform security lockout? " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
