@@ -16,7 +16,6 @@ while [ $helper != 99 ]; do
         helper=$?
         case $helper in
           1   )   exec boinctui;;
-          2   )   exec sudo systemctl restart boinc;;
           3   )   exec htop;;
           4   )   exec bmon;;
           5   )   sudo netctl stop eth
@@ -29,6 +28,9 @@ while [ $helper != 99 ]; do
           7   )   exec less /opt/helper/helper.man;;
         esac
 done
+
+echo
+echo "Type boincos-helper to reopen the helper"
 
 # Case 5 echo statement takes the netctl ethernet example
 # config and appends the current ethernet interface to it.

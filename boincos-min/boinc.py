@@ -42,7 +42,7 @@ def boinc_help():
                 return 1 # Return case for starting boinctui
             elif (cursor[0] == 6):
                 curses.endwin()
-                return 2 # Return case for restarting BOINC
+                subprocess.call('sudo systemctl restart boinc', shell=True)
             elif (cursor[0] == 8):
                 pass_scrn_sel = None
                 cursor = [4, 3]
