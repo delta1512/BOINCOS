@@ -103,7 +103,6 @@ def fw_config():
                     subprocess.call('fwset on', shell=True)
                 status_code = None
             elif (cursor[0] == 8):
-                curses.echo()
                 done = False
                 # Move into a new screen loop
                 while not done:
@@ -135,25 +134,16 @@ def fw_config():
                 if ip == 'Anywhere':
                     exit_code = subprocess.call('sudo ufw allow ' + port, shell=True)
                 else:
-                    exit_code = subprocess.call('sudo ufw allow from ' + ip + 'to any port ' + port, shell=True)
+                    exit_code = subprocess.call('sudo ufw allow from ' + ip + ' to any port ' + port, shell=True)
                 if exit_code == 0:
                     screen.addstr(2, 2, 'Firewall rule added successfully.')
                 else:
                     screen.addstr(2, 2, 'Firewall failed to add rule.')
                 screen.addstr(4, 2, 'Press any button to continue...')
                 screen.refresh()
-                screen.getch(3, 33) # Wait for any button
-                screen.noecho() # Return to original state
+                screen.getch(4, 33) # Wait for any button
             elif (cursor[0] == 10):
-                screen.addstr(1, 2, 'Resetting firewall to defaults...')
-                screen.refresh()
-                subprocess.call('fwset off', shell=True)
-                exit_code = subprocess.call('fwset reset', shell=True) # Reset the firewall using fwset
-                if exit_code == 0:
-                    screen.addstr(2, 2, 'Firewall was successfully reset to default rules.')
-                else:
-                    screen.addstr(2, 2, 'An error was encountered. Firewall failed to reset.\nAttempting to enable defaults...')
-                subprocess.call('fwset on', shell=True)
+                screen.addstr(1, 2, 'To reset firewall, exit BOINC OS Helper and type "fwset reset"')
                 screen.addstr(3, 2, 'Press any button to continue...')
                 screen.refresh()
                 screen.getch(3, 33)
