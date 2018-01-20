@@ -26,8 +26,8 @@ while [ $exit != 99 ]; do
                   ;;
           6   )   exec sudo wifi-menu;;
           7   )   exec less /opt/helper/helper.man;;
-          exit=$?
         esac
+        exit=$?
 done
 
 # Case 5 echo statement takes the netctl ethernet example
