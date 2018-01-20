@@ -47,12 +47,14 @@ def fw_config():
     selection = None
     cursor = [4, 3]
     screen = curses.initscr()
+    status_code = None
     # Move into main loop
     while selection != ord('q'):
         screen.keypad(1)
         screen.clear()
         screen.border(0)
-        status_code = subprocess.call('sudo ufw status | grep inactive', shell=True)
+        if status_code == None:
+            status_code = subprocess.call('sudo ufw status | grep inactive', shell=True)
         if status_code > 0:
             state = 'ON'
         else:
@@ -67,9 +69,9 @@ def fw_config():
         screen.refresh()
         # Fetch and handle user selection
         selection = screen.getch(cursor[0], cursor[1])
-        if (selection == UP) and (4 < cursor[0] <= 8):
+        if (selection == UP) and (4 < cursor[0] <= 10):
             cursor[0] -= 2
-        elif (selection == DN) and (4 <= cursor[0] < 8):
+        elif (selection == DN) and (4 <= cursor[0] < 10):
             cursor[0] += 2
         elif (selection == ord(' ')):
             # Start a new screen
@@ -93,12 +95,13 @@ def fw_config():
                 offset += 1 # Add some padding
                 screen.addstr(line_count+offset, 1, 'Press any button to continue...')
                 screen.refresh()
-                screen.getch(line_count+offset, 28) # Wait for any button
+                screen.getch(line_count+offset, 32) # Wait for any button
             elif (cursor[0] == 6):
                 if state == 'ON':
                     subprocess.call('fwset off', shell=True)
                 else:
                     subprocess.call('fwset on', shell=True)
+                status_code = None
             elif (cursor[0] == 8):
                 curses.echo()
                 done = False
@@ -127,7 +130,7 @@ def fw_config():
                 screen.clear()
                 screen.border(0)
                 screen.addstr(1, 2, 'Attempting to add firewall rule...')
-                screem.refresh()
+                screen.refresh()
                 # Compute a specific line of UFW code
                 if ip == 'Anywhere':
                     exit_code = subprocess.call('sudo ufw allow ' + port, shell=True)

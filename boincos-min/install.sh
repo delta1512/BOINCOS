@@ -75,7 +75,6 @@ sudo chmod -w /usr/bin/fwset /usr/bin/boincos-helper
 sudo chmod -R -w /opt/helper/
 sudo chmod -R +rx /opt/helper/
 cd /usr/bin/
-sudo ln -sf python2.7 python
 cd /
 sudo systemctl enable boinc
 sudo systemctl enable sshd

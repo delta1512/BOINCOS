@@ -10,10 +10,11 @@ if [ "$1" == "--help" ]; then
   exit 0
 fi
 
-exit=0
-while [ $exit != 99 ]; do
-        python /opt/helper/boincos-helper.py
-        case $exit in
+helper=0
+while [ $helper != 99 ]; do
+        python2 /opt/helper/boincos-helper.py
+        helper=$?
+        case $helper in
           1   )   exec boinctui;;
           2   )   exec sudo systemctl restart boinc;;
           3   )   exec htop;;
@@ -27,7 +28,6 @@ while [ $exit != 99 ]; do
           6   )   exec sudo wifi-menu;;
           7   )   exec less /opt/helper/helper.man;;
         esac
-        exit=$?
 done
 
 # Case 5 echo statement takes the netctl ethernet example
