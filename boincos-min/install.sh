@@ -79,10 +79,16 @@ sudo chmod +x /usr/bin/fwset /usr/bin/boincos-helper
 sudo chmod -w /usr/bin/fwset /usr/bin/boincos-helper
 sudo chmod -R -w /opt/helper/
 sudo chmod -R +rx /opt/helper/
-cd /usr/bin/
 cd /
+echo -e "[Unit]
+Description=BOINC OS Reporter Daemon\n
+[Service]
+ExecStart=/opt/helper/reporterd.py\n
+[Install]
+WantedBy=multi-user.target" | sudo tee /var/lib/systemd/system/reporterd.service
 sudo systemctl enable boinc
 sudo systemctl enable sshd
+sudo systemctl enable reporterd
 sudo netctl enable eth
 fwset reset
 fwset off

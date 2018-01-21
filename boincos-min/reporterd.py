@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 
 from sys import argv, exit
 from xml.dom import minidom
@@ -56,6 +56,7 @@ def fetch_data():
 
     tmp = subprocess.check_output('sensors | grep Core', shell=True).split()
     if len(tmp) > 1:
+        temperature = ''
         brack_open = False
         for chars in tmp:
             if '(' in chars:
@@ -66,7 +67,7 @@ def fetch_data():
                 brack_open = False
                 temperature += '\n'
 
-    exit_code = subprocess.call('ping -c 1 example.com', shell=True)
+    exit_code = subprocess.call('ping -c 1 archlinux.org', shell=True)
     if exit_code == 0:
         net_connect = 'Connected'
 
@@ -94,7 +95,7 @@ def fetch_data():
     final_dictionary['task_count'] = task_count
     final_dictionary['users'] = users
     final_dictionary['teams'] = teams
-    pickle.dumps(open('/tmp/report.pkl', 'wb'))
+    pickle.dump(final_dictionary, open('/tmp/report.pkl', 'wb'))
 
 
 ### START CODE ###
@@ -128,4 +129,4 @@ while True:
     boinc_search_exit_code = subprocess.call('ps -e | grep boinc_client', shell=True)
     if boinc_search_exit_code == 0:
         boinc_time += POLL_RATE
-    write_polled_data((boinc_time / (round(time.time()) - sys_start_time)))
+    write_polled_data((boinc_time / (round(time.time()) - sys_start_time))*100)

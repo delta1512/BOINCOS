@@ -48,7 +48,7 @@ def monitoring_tools():
             elif (cursor[0] == 8):
                 screen.clear()
                 try:
-                    exit_code = subprocess.call('exec /opt/helper/reporterd.py --dump', shell=True)
+                    exit_code = subprocess.call('/opt/helper/reporterd.py --dump', shell=True)
                     if exit_code != 0:
                         raise Exception('Failed to dump stats')
                     data_file = pickle.load(open('/tmp/report.pkl', 'rb'))
@@ -66,6 +66,7 @@ def monitoring_tools():
                 screen.addstr(4, 40, 'Users and teams:')
                 for uoffset, user in enumerate(data_file['users']):
                     screen.addstr(6, 40+uoffset, user)
-                uoffset += 1
+                    offset = uoffset
+                offset += 1
                 for toffset, team in enumerate(data_file['teams']):
-                    screen.addstr(6, 40+uoffset+toffset, team)
+                    screen.addstr(6, 40+offset+toffset, team)
