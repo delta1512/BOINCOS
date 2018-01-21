@@ -28,7 +28,7 @@ def boinc_help():
         screen.addstr(1, 1, 'BOINC Tools:')
         screen.addstr(4, 3, '->\t BOINC Manager')
         screen.addstr(6, 3, '->\t Restart BOINC')
-        screen.addstr(8, 3, '->\t Change RPC password')
+        screen.addstr(8, 3, '->\t RPC password')
         screen.refresh()
         # Fetch and handle user selection
         selection = screen.getch(cursor[0], cursor[1])
