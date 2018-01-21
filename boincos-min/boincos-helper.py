@@ -11,6 +11,7 @@ from firewall import fw_config
 from netcfg import net_config
 from sys import exit
 import curses
+from time import sleep
 
 ### DEFINITIONS ###
 UP = curses.KEY_UP

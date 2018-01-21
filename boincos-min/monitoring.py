@@ -52,22 +52,24 @@ def monitoring_tools():
                     if exit_code != 0:
                         raise Exception('Failed to dump stats')
                     data_file = pickle.load(open('/tmp/report.pkl', 'rb'))
+                    screen.addstr(0, 0, 'AVG CPU Usage: ' + data_file['avg_cpu'])
+                    screen.addstr(2, 0, 'Net Usage: UP: {0} DOWN: {1}'.format(
+                                data_file['net_total_up'], data_file['net_total_down']))
+                    screen.addstr(4, 0, '% of Disk Used: ' + data_file['disk_perct_used'])
+                    screen.addstr(5, 0, 'Space free: ' + data_file['disk_free'])
+                    screen.addstr(7, 0, data_file['temperature'])
+                    screen.addstr(0, 40, '% BOINC uptime: ' + data_file['boinc_percent'])
+                    screen.addstr(2, 40, 'Network: ' + data_file['net_connect'])
+                    screen.addstr(4, 40, 'Active BOINC tasks: ' + str(data_file['task_count']))
+                    screen.addstr(4, 40, 'Users and teams:')
+                    offset = 0
+                    for uoffset, user in enumerate(data_file['users']):
+                        screen.addstr(6, 40+uoffset, user)
+                        offset += uoffset
+                    offset += 1
+                    for toffset, team in enumerate(data_file['teams']):
+                        screen.addstr(6, 40+offset+toffset, team)
+                    screen.refresh()
+                    screen.getch()
                 except:
                     return 99
-                screen.addstr(0, 0, 'AVG CPU Usage: ' + data_file['avg_cpu'])
-                screen.addstr(2, 0, 'Net Usage: UP: {0} DOWN: {1}'.format(
-                            data_file['net_total_up'], data_file['net_total_down']))
-                screen.addstr(4, 0, '% of Disk Used: ' + data_file['disk_perct_used'])
-                screen.addstr(5, 0, 'Space free: ' + data_file['disk_free'])
-                screen.addstr(7, 0, data_file['temperature'])
-                screen.addstr(0, 40, '% BOINC uptime: ' + data_file['boinc_percent'])
-                screen.addstr(2, 40, 'Network: ' + data_file['net_connect'])
-                screen.addstr(4, 40, 'Active BOINC tasks: ' + str(data_file['task_count']))
-                screen.addstr(4, 40, 'Users and teams:')
-                offset = 0
-                for uoffset, user in enumerate(data_file['users']):
-                    screen.addstr(6, 40+uoffset, user)
-                    offset += uoffset
-                offset += 1
-                for toffset, team in enumerate(data_file['teams']):
-                    screen.addstr(6, 40+offset+toffset, team)
