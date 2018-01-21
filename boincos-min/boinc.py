@@ -65,3 +65,4 @@ def boinc_help():
                             pass_file.write(newpass)
                         screen.clear()
                         screen.border(0)
+    curses.endwin()

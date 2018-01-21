@@ -147,3 +147,4 @@ def fw_config():
                 screen.addstr(3, 2, 'Press any button to continue...')
                 screen.refresh()
                 screen.getch(3, 33)
+    curses.endwin()

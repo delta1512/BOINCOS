@@ -40,3 +40,4 @@ def net_config():
                 return 5 # Return case for ethernet restart
             elif (cursor[0] == 6):
                 return 6 # Return case for Wi-Fi configuration
+    curses.endwin()

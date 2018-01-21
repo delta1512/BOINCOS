@@ -73,3 +73,4 @@ def monitoring_tools():
                     screen.getch()
                 except:
                     return 99
+    curses.endwin()
