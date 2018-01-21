@@ -46,7 +46,9 @@ echo "Setting user accounts and appending sudoers..."
 
 useradd -m boincuser
 groupadd sudo
+groupadd net
 usermod -a -G sudo boicuser
+usermod -a -G net boicuser
 chmod u+w sudoers
 cp sudoers /root/sudoers.bak
 echo >> sudoers

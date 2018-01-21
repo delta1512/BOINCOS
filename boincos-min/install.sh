@@ -43,7 +43,7 @@ echo "Configuring system..."
 echo "/usr/lib" | sudo tee /etc/ld.so.conf.d/00-usrlib.conf
 echo -e "\nPermitRootLogin no" | sudo tee -a /etc/ssh/sshd_config
 cd /etc/netctl
-cp examples/ethernet-dhcp eth
+sudo cp examples/ethernet-dhcp eth
 cd /
 echo -e "<cc_config>\n\t<options>\n\t\t<use_all_gpus>1</use_all_gpus>\n\t</options>\n</cc_config>" \
         | sudo tee /var/lib/boinc/cc_config.xml
@@ -97,8 +97,11 @@ cd /
 echo
 echo "Cleaning up installation..."
 
+cd /etc/
+sudo chown -R root:net netctl/
+sudo chmod ug+rw netctl/
+sudo rm netctl/wifi
 sudo pacman -Scc
-sudo rm /etc/netctl/wifi
 sudo journalctl --flush --rotate
 sudo journalctl --vacuum-size=1M
 echo > /home/boincuser/.bash_history
