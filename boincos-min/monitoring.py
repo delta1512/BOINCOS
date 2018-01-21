@@ -64,9 +64,10 @@ def monitoring_tools():
                 screen.addstr(2, 40, 'Network: ' + data_file['net_connect'])
                 screen.addstr(4, 40, 'Active BOINC tasks: ' + str(data_file['task_count']))
                 screen.addstr(4, 40, 'Users and teams:')
+                offset = 0
                 for uoffset, user in enumerate(data_file['users']):
                     screen.addstr(6, 40+uoffset, user)
-                    offset = uoffset
+                    offset += uoffset
                 offset += 1
                 for toffset, team in enumerate(data_file['teams']):
                     screen.addstr(6, 40+offset+toffset, team)
