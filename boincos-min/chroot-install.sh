@@ -22,12 +22,12 @@ echo "BOINCOS-MIN" > hostname
 echo > hosts
 echo "127.0.0.1    localhost.localdomain	localhost" >> hosts
 echo "::1          localhost.localdomain	localhost" >> hosts
-echo "127.0.1.1    BOINCOS-MIN.localdomain	localhost" >> hosts
+echo "127.0.1.1    BOINCOS-MIN.localdomain	BOINCOS-MIN" >> hosts
 
 echo
 echo "Installing initial packages..."
 
-pacman -S efibootmgr grub wpa_supplicant dialog intel-ucode sudo
+pacman -S efibootmgr grub wpa_supplicant dialog intel-ucode sudo wget python2
 
 echo
 echo "Installing grub for uefi..."
@@ -39,16 +39,17 @@ echo "Downloading grub configuration script..."
 cd /tmp/
 wget https://raw.githubusercontent.com/delta1512/BOINCOS/master/cross-distro/grub_configure.py
 echo "Executing script..."
-python3 grub_configure.py
+python2 grub_configure.py
 
 echo
 echo "Setting user accounts and appending sudoers..."
 
+cd /etc/
 useradd -m boincuser
 groupadd sudo
 groupadd net
-usermod -a -G sudo boicuser
-usermod -a -G net boicuser
+usermod -a -G sudo boincuser
+usermod -a -G net boincuser
 chmod u+w sudoers
 cp sudoers /root/sudoers.bak
 echo >> sudoers

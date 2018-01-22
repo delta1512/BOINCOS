@@ -43,7 +43,6 @@ echo "Configuring system..."
 cd /etc/
 sudo chown -R root:net netctl/
 sudo chmod ug+rw netctl/
-usermod -a -G net boincuser
 echo "/usr/lib" | sudo tee /etc/ld.so.conf.d/00-usrlib.conf
 echo -e "\nPermitRootLogin no" | sudo tee -a /etc/ssh/sshd_config
 cd netctl/
@@ -59,7 +58,7 @@ User=boinc
 Nice=19
 ExecStart=/usr/bin/boinc_client --dir /var/lib/boinc --redirectio --allow_gui_rpc\n
 [Install]
-WantedBy=multi-user.target" | sudo tee /var/lib/systemd/system/boinc.service
+WantedBy=multi-user.target" | sudo tee /usr/lib/systemd/system/boinc.service
 cd /home/boincuser/
 echo "alias man boincos-helper='boincos-helper --help'
 alias boincos='boincos-helper --help'
@@ -85,7 +84,7 @@ Description=BOINC OS Reporter Daemon\n
 [Service]
 ExecStart=/opt/helper/reporterd.py\n
 [Install]
-WantedBy=multi-user.target" | sudo tee /var/lib/systemd/system/reporterd.service
+WantedBy=multi-user.target" | sudo tee /usr/lib/systemd/system/reporterd.service
 sudo systemctl enable boinc
 sudo systemctl enable sshd
 sudo systemctl enable reporterd
@@ -99,7 +98,7 @@ echo "Initialising and configuring BOINC..."
 sudo systemctl start boinc
 sudo usermod -a -G boinc boincuser
 cd /var/lib/
-sleep(120) # Wait for the BOINC client to generate all necessary files
+sleep 120 # Wait for the BOINC client to generate all necessary files
 echo "boincos" | sudo tee boinc/gui_rpc_auth.cfg
 sudo chown -R boinc:boinc boinc/
 sudo chmod -R ug+rw boinc/
@@ -122,14 +121,14 @@ echo "Moving to final security steps..."
 
 read -p "Perform security lockout? " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  sudo passwd -l root
   cd /etc/
   sudo chmod u+w sudoers
   sudo mv /tmp/sudoers.bak sudoers
   echo "%sudo ALL=(ALL) NOPASSWD: /usr/bin/pacman -Syu,/usr/bin/reboot,/usr/bin/shutdown,/usr/bin/ufw,/usr/bin/systemctl" \
   | sudo tee -a sudoers
-  sudo chmod -w sudoers
   cd /
+  echo
+  echo "Installation complete, move to root to remove write on sudoers and lockout"
 else
   exit 0
 fi

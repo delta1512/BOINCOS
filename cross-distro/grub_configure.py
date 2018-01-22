@@ -72,7 +72,7 @@ def reconstructGrubCFG(entries):
                     temporaryFile.append(l)
             else:
                 temporaryFile.append(line)
-    writeListToFile('grub.cfg', temporaryFile)
+    writeListToFile('/boot/grub/grub.cfg', temporaryFile)
 
 backup('grub.cfg') # First backup the original config, just incase
 findEntry('submenu', True) # Remove the default submenu and corresponding entries
