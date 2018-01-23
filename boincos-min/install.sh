@@ -88,7 +88,6 @@ WantedBy=multi-user.target" | sudo tee /usr/lib/systemd/system/reporterd.service
 sudo systemctl enable boinc
 sudo systemctl enable sshd
 sudo systemctl enable reporterd
-sudo netctl enable eth
 fwset reset
 fwset off
 
@@ -123,9 +122,9 @@ read -p "Perform security lockout? " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   cd /etc/
   sudo chmod u+w sudoers
-  sudo mv /tmp/sudoers.bak sudoers
   echo "%sudo ALL=(ALL) NOPASSWD: /usr/bin/pacman -Syu,/usr/bin/reboot,/usr/bin/shutdown,/usr/bin/ufw,/usr/bin/systemctl" \
-  | sudo tee -a sudoers
+  | sudo tee -a /tmp/sudoers
+  sudo mv /tmp/sudoers.bak sudoers
   cd /
   echo
   echo "Installation complete, move to root to remove write on sudoers and lockout"
