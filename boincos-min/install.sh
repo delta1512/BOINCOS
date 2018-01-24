@@ -122,7 +122,7 @@ read -p "Perform security lockout? " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   cd /etc/
   sudo chmod u+w sudoers
-  echo "%sudo ALL=(ALL) NOPASSWD: /usr/bin/pacman -Syu,/usr/bin/reboot,/usr/bin/shutdown,/usr/bin/ufw,/usr/bin/systemctl,/usr/bin/wifi-menu" \
+  echo "%sudo ALL=(ALL) NOPASSWD: /usr/bin/pacman -Syu,/usr/bin/reboot,/usr/bin/shutdown,/usr/bin/ufw,/usr/bin/systemctl,/usr/bin/wifi-menu,/usr/bin/netctl,/usr/bin/ip" \
   | sudo tee -a /tmp/sudoers
   sudo mv /tmp/sudoers.bak sudoers
   cd /
