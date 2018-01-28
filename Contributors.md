@@ -36,3 +36,13 @@ Generous initial donator and supporter of the project.
 |------------|:-----------------------------------------|
 |Gridcoin    |SG5t2ySH6dyxkXZ29jyUsvVkUSBUh5di4D        |
 |Bitcoin     |1JQyGhBYJM1bBLRzo1yttSRk9cWgPVN7du        |
+
+---
+
+### [Tcblack](https://github.com/tcblack)
+
+Main developer and experimenter for the BOINC OS PXE boot spin.
+
+|Coin        |Address                                   |
+|------------|:-----------------------------------------|
+|Gridcoin    |SDG44Y7HHTcTocYMAqAt5cS8nF33zBWk99        |
