@@ -8,6 +8,7 @@ Main founder and responsible for the backend customisation of the archlinux base
 |Coin        |Address                                   |
 |------------|:-----------------------------------------|
 |Gridcoin    |SGJFJ4C6gXm8xkz3Zwxsdyzcfu7YkXJwEW        |
+|PinkCoin    |2DNn6LcKFdPHeHXBZbVYhrUYZm9NWv85FC        |
 |Myriad      |MS88BXpVeDGjyeU5nBUoXnp4ttiEwT1tfU        |
 |Bitcoin     |1M4r147uUQRjnV1hQykc42pQzTKaT873Vt        |
 |Litecoin    |LaecuPaipB7sGiKGCpxRcZpgdB6ijaJ2uU        |
