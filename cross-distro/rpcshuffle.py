@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import subprocess as sp
 
 newpass = False
