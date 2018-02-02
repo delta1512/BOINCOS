@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Boinc OS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8"> 
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto:300,300i,500,100" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <style>
+      .toplogo {
+        width: 25%;
+        max-width: 400px;
+        height: auto;
+        margin-top: 8px;
+        filter: drop-shadow(0px 2px 6px #000000);
+      }
+      .landing h1, .landing p {
+        margin: 0 0.25em !important;
+        font-size: 2em;
+      }
+      @media screen and (max-width: 700px) {
+      }     
+      .statusball {
+        width: 1em;
+        height: 1em;
+        display: inline-block;
+        border-radius: 50%;
+        vertical-align: baseline;
+        position: relative;
+        top: 3px;
+      } 
+      .statusball.red {
+        background-color: #CC0000;
+      }
+      .statusball.orange {
+        background-color: #CC6600;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+    </header>
+    <main>
+      <div class="landing experimental">
+        <div class="center">
+          <img src="media/BOINCOS-Experimental-Logo.svg" class="toplogo">
+          <h1>BOINC OS Experimental</h1>
+        </div>
+      </div>
+      <div class="wrapper" style="background-color: #fff">
+        <p style="text-align: center">We have stuff here for you to click on. Click on them</p>
+
+        <div class="popupwrapper">
+          <label for="popup1">
+            <div class="popupbutton" style="background-image: url('media/earth_bg.jpg');"></div>
+          </label>
+          <input type="checkbox" id="popup1">
+          <div class="popup">
+            <label class="close" for="popup1"><img src="media/close.svg" alt="Close"></label>
+            <div class="wrapper">
+              <div class="header">
+                <div class="bgi" style="
+      background-image: url('media/earth_bg.jpg');"></div>
+                <p>BOINC OS Installer</p>
+              </div>
+              <div class="content">
+                <p>This is a tool used to install BOINC OS automatically to a USB or hard drive from your host OS. It intends to be a multi-platform GUI program that allows you to instantly install any BOINC OS spin straight to your USB in one click.</p>
+                <p><strong>Status: Development not started <span class="statusball red"></span></strong></p>
+
+                <span class="link" disabled>Download</span><br>
+                <span class="link" disabled>Documentation</span>
+              </div>
+              <div class="authors">
+                <h2>Authors</h2>
+                <p>Delta</p>
+              </div>
+            </div>
+          </div><!--
+
+          --><label for="popup2">
+            <div class="popupbutton" style="background-image: url('media/earth_bg.jpg');"></div>
+          </label>
+          <input type="checkbox" id="popup2">
+          <div class="popup">
+            <label class="close" for="popup2"><img src="media/close.svg" alt="Close"></label>
+            <div class="wrapper">
+              <div class="header">
+                <div class="bgi" style="
+      background-image: url('media/earth_bg.jpg');"></div>
+                <p>BOINC OS PXE Boot</p>
+              </div>
+              <div class="content">
+                <p>PXE network boot is a method of getting a bootable image to a network of computers easily without having to install anything on them initially. This is typically used in enterprise style networks and this BOINC OS spin intends to take advantage of this concept. It will allow you to run a PXE server that allows you to install or simply run BOINC OS on a large number of computers.</p>
+
+                <p><strong>Status: Development in progress <span class="statusball orange"></span></strong></p>
+
+                <span class="link" disabled>Download</span><br>
+                <span class="link" disabled>Documentation</span>
+
+              </div>
+              <div class="authors">
+                <h2>Authors</h2>
+                <p><a href="https://github.com/tcblack">Tcblack</a></p>
+              </div>
+            </div>
+          </div><!--
+
+          --><label for="popup3">
+            <div class="popupbutton" style="background-image: url('media/earth_bg.jpg');"></div>
+          </label>
+          <input type="checkbox" id="popup3">
+          <div class="popup">
+            <label class="close" for="popup3"><img src="media/close.svg" alt="Close"></label>
+            <div class="wrapper">
+              <div class="header">
+                <div class="bgi" style="
+      background-image: url('media/earth_bg.jpg');"></div>
+                <p>BOINC OF for RPI</p>
+              </div>
+              <div class="content">
+                <p>A BOINC OS graphical spin for the Raspberry Pi. Aim of this OS to be simply flashed to an SD card and switched out with a typical image when you wish to compute.</p>
+
+                <p><strong>Status: Development not started <span class="statusball red"></span></strong></p>
+
+                <span class="link" disabled>Download</span><br>
+                <span class="link" disabled>Documentation</span>
+
+              </div>
+              <div class="authors">
+                <h2>Authors</h2>
+                <p>Delta</p>
+              </div>
+            </div>
+          </div><!--
+
+         --><label for="popup4">
+            <div class="popupbutton" style="background-image: url('media/earth_bg.jpg');"></div>
+          </label>
+          <input type="checkbox" id="popup4">
+          <div class="popup">
+            <label class="close" for="popup4"><img src="media/close.svg" alt="Close"></label>
+            <div class="wrapper">
+              <div class="header">
+                <div class="bgi" style="
+      background-image: url('media/earth_bg.jpg');"></div>
+                <p>Vbox TmpOS Spin</p>
+              </div>
+              <div class="content">
+                <p>BOINC OS as a temporary OS, i.e, the OS is entirely in RAM. This will be for users who want speed when starting up or using the system but are not concerned with maintaining their progress. This is also the perfect distro for using in conjunction with Virtualbox.</p>
+
+                <p><strong>Status: Development not started <span class="statusball red"></span></strong></p>
+
+                <span class="link" disabled>Download</span><br>
+                <span class="link" disabled>Documentation</span>
+
+              </div>
+              <div class="authors">
+                <h2>Authors</h2>
+                <p>Delta</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content">
+          <h2>Feel Like Contributing?</h2>
+          <p>All BOINC OS experimental spins are open for the public to work on - if you feel up to the challenge of course. The following are some ways you could help the project:</p>
+          <h3>Tackle one of them:</h3>
+          <p>Have a go at trying to make one of these happen! To get started, contact the main developer at <a href="mailto:boincosdelta@gmail.com">boincosdelta@gmail.com</a> so you can get kitted out with all the information you need. If you run into issues during development, feel free to post a <a href="https://github.com/delta1512/BOINCOS/issues">GitHub issue</a> and the community will help you out.
+          <h3>Help out a project in progress:</h3>
+          <p>Help out a member already trying to tackle a project! Any relevant contact information for members will be posted on the above cards under the “Author” title.</p>
+          <h3>Think of a new spin:</h3>
+          <p>New ideas are always accepted! If you have an idea to add to the experimental versions, put up a <a href="https://github.com/delta1512/BOINCOS/issues">GitHub issue</a> or email the main developer at <a href="mailto:boincosdelta@gmail.com">boincosdelta@gmail.com</a>.</p>
+          <h3>Donate:</h3>
+          <p>There is no limit to generosity! Donations are always accepted, you can find out who you can donate to and what you can donate over on the <a href="https://github.com/delta1512/BOINCOS/blob/master/Contributors.md">contributors list</a>.</p>
+        </div>
+      </div>
+      <div class="wrapper" style="background-color: #dedede">
+        <div class="content" style="margin-top: 24px; margin-bottom: 8px;">
+          <p><small style="font-size: 0.9em">Website by <a style="color: #333" href="https://aurailus.design/?referrer=boincos">Aurailus Design</a> &mdash; &copy; 2018.</small></p>
+        </div>
+      </div>
+    </main>
+    <footer>
+    </footer>
+  </body>
+</html>
+<script>
+$(document).on('click', 'a[href^="#"]', function(e) {
+    var id = $(this).attr('href');
+    var $id = $(id);
+    if ($id.length === 0) {
+        return false;
+    }
+    e.preventDefault();
+    var pos = $id.offset().top;
+    $('body, html').animate({scrollTop: pos}, 1000, "swing");
+});
+</script>

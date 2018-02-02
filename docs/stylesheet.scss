@@ -12,6 +12,10 @@ body, html {
 	font-weight: 300;
 }
 
+strong {
+	font-weight: 500;
+}
+
 h1, h2, h3, h4, h5, h6 {
 	font-family: "Raleway", Roboto, "Roboto", "Open Sans", "Noto Sans", "Helvetica", "Segoe UI Light", "Segoe UI", "Arial", sans-serif;
 	font-weight: 500;
@@ -42,6 +46,10 @@ main {
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 		color: #fff;
+
+		&.experimental {
+			height: 50vh;
+		}
 
 		.center {
 			position: absolute;
@@ -214,6 +222,137 @@ main {
 			background-color: #1281AB;
 		}
 	}
+
+	.popupwrapper {
+		width: auto;
+		max-width: 700px;
+		margin: 16px auto;
+		display: block;
+	}
+
+	.popupwrapper > label {
+		width: 50%;
+		max-width: 250px;
+		margin: 30px 45px;
+		display: inline-block;
+		cursor: pointer;
+	}
+
+  .popupbutton {
+  	width: 100%;
+  	padding-bottom: 100%;
+    display: inline-block;
+    border-radius: 50%;
+    box-shadow: 0px 2px 12px 0px #0005;
+    transition: filter 0.2s;
+    background-position: center center;
+    background-size: cover;
+    background-color: #000;
+  	color: #fff;
+
+    &:hover {
+    	filter: brightness(120%);
+    }
+    &:active {
+    	filter: brightness(140%);
+    }
+
+    &>p {
+    	margin: 0;
+    	$font-size: 20px;
+    	text-align: center;
+    	padding: 16px;
+    	padding-top: 160px/2 - $font-size;
+    	user-select: none;
+    }
+  }
+  .popup {
+  	position: fixed;
+  	display: block;
+  	top: 0px;
+  	left: 0px;
+  	background-color: #fff;
+  	width: 100%;
+  	height: 100%;
+  	transform: scale(0);
+  	transition: transform 0.4s, border-radius 0.3s 0s, opacity 0.2s 0.1s;
+  	border-radius: 50%;
+  	opacity: 0;
+  	will-change: transform;
+  	z-index: 1;
+  	box-shadow: 0px 4px 32px 0px #0007;
+  	overflow: hidden;
+
+  	.close {
+  		position: absolute;
+  		top: 0px;
+  		right: 0px;
+
+  		img {
+	 			width: 64px;
+	 			height: 64px;
+	 			cursor: pointer;
+	 			padding: 16px;
+
+	 			&:hover, &:active {
+	 				filter: invert(30%);
+	 			}
+	 			&:active {
+	 				filter: invert(50%);
+	 			}
+  		}
+  	}
+
+  	.wrapper {
+  		width: 100%;
+  		height: auto;
+  		overflow: scroll;
+  		
+  		.header {
+  			width: 100%;
+  			height: 64px;
+  			background-color: #eee;
+  			display: block;
+  			overflow: auto;
+
+  			.bgi {
+  				height: 64px;
+  				width: 200px;
+  				display: inline-block;
+  				background-color: #000;
+  				background-position: center center;
+  				background-size: cover;
+  				margin-right: 16px;
+  			}
+  			p {
+  				display: inline-block;
+  				vertical-align: top;
+  			}
+  		}
+  		.content {
+  			padding: 32px 16px;
+  			overflow: auto;
+	  		max-width: 1152px;
+	  		margin: 0 auto;
+  		}
+  		.authors {
+  			padding: 16px;
+  			background-color: #eee;
+  			overflow: auto;
+  			width: 100%;
+  		}
+  	}
+  }
+  input[type='checkbox'] {
+  	display: none;
+  }
+  input:checked + .popup {
+  	transform: scale(1);
+  	border-radius: 0;
+  	opacity: 1;
+  	transition: transform 0.4s, border-radius 0.3s 0.1s, opacity 0.1s 0s;
+  	background-color: #fff;
+  }
 
 	.cta_arrow {
 		position: absolute;
