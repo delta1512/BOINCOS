@@ -6,7 +6,7 @@ Authors:
 '''
 
 from sys import exit
-import subprocess
+import subprocess as sp
 import curses
 import pickle
 
@@ -48,7 +48,7 @@ def monitoring_tools():
             elif (cursor[0] == 8):
                 screen.clear()
                 try:
-                    exit_code = subprocess.call('/opt/helper/reporterd.py --dump', shell=True)
+                    exit_code = sp.call('/opt/helper/reporterd.py --dump', shell=True)
                     if exit_code != 0:
                         raise Exception('Failed to dump stats')
                     data_file = pickle.load(open('/tmp/report.pkl', 'rb'))

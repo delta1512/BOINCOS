@@ -56,7 +56,7 @@ Description=BOINC Daemon\n
 [Service]
 User=boinc
 Nice=19
-ExecStart=/usr/bin/boinc_client --dir /var/lib/boinc --redirectio --allow_gui_rpc\n
+ExecStart=/usr/bin/boinc_client --dir /var/lib/boinc --redirectio --allow_remote_gui_rpc\n
 [Install]
 WantedBy=multi-user.target" | sudo tee /usr/lib/systemd/system/boinc.service
 cd /home/boincuser/

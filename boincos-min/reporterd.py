@@ -1,9 +1,16 @@
 #!/usr/bin/python2
 
+'''
+BOINC OS reporter script to collect system data and report it to the user.
+--dump simply collects data and dumps it into a file in /tmp/ for monitoring.py
+Authors:
+  - Delta
+'''
+
 from sys import argv, exit
 from xml.dom import minidom
 from glob import glob
-import subprocess
+import subprocess as sp
 import pickle
 import time
 
@@ -41,7 +48,7 @@ def fetch_data():
     users, teams = [], []
     final_dictionary = {}
 
-    avg_cpu = str(round(float(subprocess.check_output("grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}'", shell=True)), 1)) + '%'
+    avg_cpu = str(round(float(sp.check_output("grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}'", shell=True)), 1)) + '%'
 
     with open('/proc/net/dev', 'r') as net_dev:
         for line in net_dev.readlines():
@@ -50,11 +57,11 @@ def fetch_data():
                 net_total_up = size_conv(int(line_arr[9]))
                 net_total_down = size_conv(int(line_arr[1]))
 
-    raw_disk_data = subprocess.check_output('df -h /', shell=True).split()[10:12]
+    raw_disk_data = sp.check_output('df -h /', shell=True).split()[10:12]
     disk_free = raw_disk_data[0]
     disk_perct_used = raw_disk_data[1]
 
-    tmp = subprocess.check_output('sensors | grep Core', shell=True).split()
+    tmp = sp.check_output('sensors | grep Core', shell=True).split()
     if len(tmp) > 1:
         temperature = ''
         brack_open = False
@@ -67,7 +74,7 @@ def fetch_data():
                 brack_open = False
                 temperature += '\n'
 
-    exit_code = subprocess.call('ping -c 1 archlinux.org', shell=True)
+    exit_code = sp.call('ping -c 1 archlinux.org', shell=True)
     if exit_code == 0:
         net_connect = 'Connected'
 
@@ -115,18 +122,18 @@ else: # Set defaults
 
 newpass = False
 with open('/var/lib/boinc/gui_rpc_auth.cfg', 'r') as RPC_pass_file:
-    if RPC_pass_file.read() == 'boincos':
+    if RPC_pass_file.read().replace('\n', '') == 'boincos':
         newpass = True
 if newpass:
     with open('/var/lib/boinc/gui_rpc_auth.cfg', 'w') as RPC_pass_file:
-        RPC_pass_file.write(subprocess.check_output('head -n 3 /dev/urandom | sha256sum', shell=True)[:8])
+        RPC_pass_file.write(sp.check_output('head -n 3 /dev/urandom | sha256sum', shell=True).decode()[:8])
 
 sys_start_time = round(time.time())
 boinc_time = 0
 
 while True:
     time.sleep(POLL_RATE)
-    boinc_search_exit_code = subprocess.call('ps -e | grep boinc_client', shell=True)
+    boinc_search_exit_code = sp.call('ps -e | grep boinc_client', shell=True)
     if boinc_search_exit_code == 0:
         boinc_time += POLL_RATE
     write_polled_data((boinc_time / (round(time.time()) - sys_start_time))*100)

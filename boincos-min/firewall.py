@@ -5,7 +5,7 @@ Authors:
   - Delta
 '''
 
-import subprocess
+import subprocess as sp
 import curses
 
 ### DEFINITIONS ###
@@ -54,7 +54,7 @@ def fw_config():
         screen.clear()
         screen.border(0)
         if status_code == None:
-            status_code = subprocess.call('sudo ufw status | grep inactive', shell=True)
+            status_code = sp.call('sudo ufw status | grep inactive', shell=True)
         if status_code > 0:
             state = 'ON'
         else:
@@ -80,7 +80,7 @@ def fw_config():
             if (cursor[0] == 4):
                 screen.addstr(1, 1, 'Current firewall status from UFW:')
                 # The following fetches firewall information and prints it to the screen
-                fw_state = subprocess.check_output('sudo ufw status', shell=True) # Get status
+                fw_state = sp.check_output('sudo ufw status', shell=True) # Get status
                 # Initialise defaults
                 line_count = 0
                 offset = 4
@@ -98,9 +98,9 @@ def fw_config():
                 screen.getch(line_count+offset, 32) # Wait for any button
             elif (cursor[0] == 6):
                 if state == 'ON':
-                    subprocess.call('fwset off', shell=True)
+                    sp.call('fwset off', shell=True)
                 else:
-                    subprocess.call('fwset on', shell=True)
+                    sp.call('fwset on', shell=True)
                 status_code = None
             elif (cursor[0] == 8):
                 done = False
@@ -132,9 +132,9 @@ def fw_config():
                 screen.refresh()
                 # Compute a specific line of UFW code
                 if ip == 'Anywhere':
-                    exit_code = subprocess.call('sudo ufw allow ' + port, shell=True)
+                    exit_code = sp.call('sudo ufw allow ' + port, shell=True)
                 else:
-                    exit_code = subprocess.call('sudo ufw allow from ' + ip + ' to any port ' + port, shell=True)
+                    exit_code = sp.call('sudo ufw allow from ' + ip + ' to any port ' + port, shell=True)
                 if exit_code == 0:
                     screen.addstr(2, 2, 'Firewall rule added successfully.')
                 else:
