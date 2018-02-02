@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# BOINC OS Helper init/control script.
+# Controls the python curses interface for the
+# Authors:
+#   - Delta
+
+if [ "$1" == "--help" ]; then
+  exec less /opt/helper/helper.man
+  exit 0
+fi
+
+helper=0
+while [ $helper != 99 ]; do
+        python2 /opt/helper/boincos-helper.py
+        helper=$?
+        case $helper in
+          1   )   boinctui;;
+          3   )   htop;;
+          4   )   bmon;;
+          5   )   sudo netctl stop eth
+                  sudo netctl disable eth
+                  echo -e "$(grep -v Interface /etc/netctl/examples/ethernet-dhcp)\nInterface=$(ls -w 1 /sys/class/net | head -n 1)" > /etc/netctl/eth
+                  sudo netctl enable eth
+                  sudo netctl start eth
+                  ;;
+          6   )   sudo wifi-menu;;
+          7   )   less /opt/helper/helper.man;;
+        esac
+done
+
+# Case 5 echo statement takes the netctl ethernet example
+# config and appends the current ethernet interface to it.
