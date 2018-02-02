@@ -1,10 +1,10 @@
-# BOINCOS Repository
+# BOINC OS Repository
 
-This repository contains the majority of files used in the BOINCOS system
+This repository contains the majority of files used in the BOINC OS system
 
-## What is BOINCOS?
+## What is BOINC OS?
 
-BOINCOS is a customised operating system tasked with the sole purpose of performing distributed/volunteer computing using the Berkley Open Infrastructure for Networked Computing [BOINC](https://boinc.berkeley.edu). BOINCOS's goal is to be run on a USB and be able to boot into any type of hardware in order to use the computer for scientific compute tasks. It is a linux operating system built upon [Arch Linux](https://www.archlinux.org).
+BOINC OS is a customised operating system tasked with the sole purpose of performing distributed/volunteer computing using the Berkley Open Infrastructure for Networked Computing [BOINC](https://boinc.berkeley.edu). BOINC OS's goal is to be run on a USB and be able to boot into any type of hardware in order to use the computer for scientific compute tasks. It is a linux operating system built upon [Arch Linux](https://www.archlinux.org).
 
 Find more information [on our website](https://delta1512.github.io/BOINCOS/).
 

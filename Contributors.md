@@ -8,6 +8,7 @@ Main founder and responsible for the backend customisation of the archlinux base
 |Coin        |Address                                   |
 |------------|:-----------------------------------------|
 |Gridcoin    |SGJFJ4C6gXm8xkz3Zwxsdyzcfu7YkXJwEW        |
+|PinkCoin    |2DNn6LcKFdPHeHXBZbVYhrUYZm9NWv85FC        |
 |Myriad      |MS88BXpVeDGjyeU5nBUoXnp4ttiEwT1tfU        |
 |Bitcoin     |1M4r147uUQRjnV1hQykc42pQzTKaT873Vt        |
 |Litecoin    |LaecuPaipB7sGiKGCpxRcZpgdB6ijaJ2uU        |
@@ -36,3 +37,13 @@ Generous initial donator and supporter of the project.
 |------------|:-----------------------------------------|
 |Gridcoin    |SG5t2ySH6dyxkXZ29jyUsvVkUSBUh5di4D        |
 |Bitcoin     |1JQyGhBYJM1bBLRzo1yttSRk9cWgPVN7du        |
+
+---
+
+### [Tcblack](https://github.com/tcblack)
+
+Main developer and experimenter for the BOINC OS PXE boot spin.
+
+|Coin        |Address                                   |
+|------------|:-----------------------------------------|
+|Gridcoin    |SDG44Y7HHTcTocYMAqAt5cS8nF33zBWk99        |
