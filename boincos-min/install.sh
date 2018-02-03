@@ -78,6 +78,7 @@ sudo chmod +x /usr/bin/fwset /usr/bin/boincos-helper
 sudo chmod -w /usr/bin/fwset /usr/bin/boincos-helper
 sudo chmod -R -w /opt/helper/
 sudo chmod -R +rx /opt/helper/
+sudo chown -R root:root /opt/helper/
 cd /
 echo -e "[Unit]
 Description=BOINC OS Reporter Daemon\n
@@ -97,6 +98,7 @@ echo "Initialising and configuring BOINC..."
 sudo systemctl start boinc
 sudo usermod -a -G boinc boincuser
 cd /var/lib/
+echo "Waiting for BOINC files to be written"
 sleep 120 # Wait for the BOINC client to generate all necessary files
 echo "boincos" | sudo tee boinc/gui_rpc_auth.cfg
 sudo chown -R boinc:boinc boinc/
