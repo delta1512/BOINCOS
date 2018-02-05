@@ -49,6 +49,7 @@ main {
 
 		&.experimental {
 			height: 55vh;
+			background-image: url('media/hadron_bg.jpg');
 		}
 
 		.center {
@@ -64,6 +65,7 @@ main {
 				margin-top: 8px; 
 				font-size: 1.7em; 
 				font-weight: 100;
+				text-shadow: 0px 0px 20px #0009;
 			}
 
 			h1 {
