@@ -49,7 +49,7 @@ main {
     color: #fff; }
     /* line 50, stylesheet.scss */
     main .landing.experimental {
-      height: 50vh; }
+      height: 55vh; }
     /* line 54, stylesheet.scss */
     main .landing .center {
       position: absolute;
@@ -277,14 +277,14 @@ main {
     main .popup .wrapper {
       width: 100%;
       height: auto;
-      overflow: scroll; }
+      overflow: auto; }
       /* line 316, stylesheet.scss */
       main .popup .wrapper .header {
         width: 100%;
         height: 64px;
         background-color: #eee;
         display: block;
-        overflow: auto; }
+        overflow: hidden; }
         /* line 323, stylesheet.scss */
         main .popup .wrapper .header .bgi {
           height: 64px;
