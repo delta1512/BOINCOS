@@ -64,19 +64,23 @@ main {
       main .landing .center p {
         margin-top: 8px;
         font-size: 1.7em;
-        font-weight: 100;
-        text-shadow: 0px 0px 20px #0009; }
-      /* line 71, stylesheet.scss */
+        font-weight: 100; }
+      /* line 70, stylesheet.scss */
       main .landing .center h1 {
-        margin: 32px 0; }
+        margin: 32px 0;
+        text-shadow: 0px 0px 20px #0009; }
         @media screen and (max-width: 750px) {
           /* line 75, stylesheet.scss */
           main .landing .center h1 {
             font-size: 2.5em; } }
-  /* line 83, stylesheet.scss */
+    @media screen and (max-width: 750px) {
+      /* line 84, stylesheet.scss */
+      main .landing.experimental h1 {
+        font-size: 1.8em; } }
+  /* line 90, stylesheet.scss */
   main .wrapper {
     overflow: auto; }
-  /* line 86, stylesheet.scss */
+  /* line 93, stylesheet.scss */
   main .content {
     display: block;
     width: auto;
@@ -85,10 +89,10 @@ main {
     margin: 16px;
     margin-bottom: 64px; }
     @media screen and (min-width: 1120px) {
-      /* line 86, stylesheet.scss */
+      /* line 93, stylesheet.scss */
       main .content {
         margin: 16px auto 64px auto; } }
-    /* line 98, stylesheet.scss */
+    /* line 105, stylesheet.scss */
     main .content .col3 {
       display: inline-block;
       padding: 8px;
@@ -97,7 +101,7 @@ main {
       height: auto;
       overflow: hidden; }
       @media screen and (max-width: 950px) {
-        /* line 107, stylesheet.scss */
+        /* line 114, stylesheet.scss */
         main .content .col3 {
           display: block;
           width: 100%;
@@ -105,15 +109,15 @@ main {
           max-width: 500px;
           margin-bottom: 24px;
           overflow: hidden; } }
-      /* line 117, stylesheet.scss */
+      /* line 124, stylesheet.scss */
       main .content .col3 p {
         text-align: center;
         color: #555; }
-        /* line 121, stylesheet.scss */
+        /* line 128, stylesheet.scss */
         main .content .col3 p a {
           text-decoration: underline;
           color: #555; }
-    /* line 128, stylesheet.scss */
+    /* line 135, stylesheet.scss */
     main .content .col2 {
       display: inline-block;
       padding: 16px;
@@ -122,11 +126,11 @@ main {
       height: auto;
       overflow: auto; }
       @media screen and (max-width: 750px) {
-        /* line 137, stylesheet.scss */
+        /* line 144, stylesheet.scss */
         main .content .col2 {
           display: block;
           width: 100%; } }
-    /* line 144, stylesheet.scss */
+    /* line 151, stylesheet.scss */
     main .content .downloaddiv {
       width: 100%;
       height: 0;
@@ -136,7 +140,7 @@ main {
       display: inline-block;
       background-color: #ccc;
       overflow: hidden; }
-      /* line 154, stylesheet.scss */
+      /* line 161, stylesheet.scss */
       main .content .downloaddiv .inner {
         width: 100%;
         height: 100%;
@@ -144,7 +148,7 @@ main {
         padding: 8px;
         text-align: center;
         overflow: hidden; }
-        /* line 162, stylesheet.scss */
+        /* line 169, stylesheet.scss */
         main .content .downloaddiv .inner h3 {
           font-size: 1.4em;
           position: relative;
@@ -152,7 +156,7 @@ main {
           transition: top 0.2s;
           color: #000;
           user-select: none; }
-        /* line 170, stylesheet.scss */
+        /* line 177, stylesheet.scss */
         main .content .downloaddiv .inner p {
           font-size: 0.9em;
           position: relative;
@@ -162,7 +166,7 @@ main {
           margin-top: 4px;
           transition: top 0.2s, opacity 0.2s;
           color: #000; }
-        /* line 181, stylesheet.scss */
+        /* line 188, stylesheet.scss */
         main .content .downloaddiv .inner img {
           width: 40%;
           height: 40%;
@@ -170,50 +174,57 @@ main {
           top: 40px;
           position: relative;
           transition: top 0.2s; }
-        /* line 189, stylesheet.scss */
+        /* line 196, stylesheet.scss */
         main .content .downloaddiv .inner small {
           opacity: 0.8; }
-        /* line 194, stylesheet.scss */
+        /* line 201, stylesheet.scss */
         main .content .downloaddiv .inner:not(.disabled):hover img {
           filter: brightness(1);
           top: 10px; }
-        /* line 198, stylesheet.scss */
+        /* line 205, stylesheet.scss */
         main .content .downloaddiv .inner:not(.disabled):hover h3 {
           top: -10px;
           color: #fff; }
-        /* line 202, stylesheet.scss */
+        /* line 209, stylesheet.scss */
         main .content .downloaddiv .inner:not(.disabled):hover p {
           top: -30px;
           opacity: 1;
           color: #fff; }
-        /* line 208, stylesheet.scss */
+        /* line 215, stylesheet.scss */
         main .content .downloaddiv .inner.disabled {
           opacity: 0.5;
           color: #eee;
           cursor: not-allowed; }
-    /* line 216, stylesheet.scss */
+    /* line 223, stylesheet.scss */
     main .content .col3:nth-of-type(1) a .downloaddiv:hover {
       background-color: #BA8326; }
-    /* line 220, stylesheet.scss */
+    /* line 227, stylesheet.scss */
     main .content .col3:nth-of-type(2) a .downloaddiv:hover {
       background-color: #265581; }
-    /* line 224, stylesheet.scss */
+    /* line 231, stylesheet.scss */
     main .content .col3:nth-of-type(3) a .downloaddiv:hover {
       background-color: #1281AB; }
-  /* line 229, stylesheet.scss */
+  /* line 236, stylesheet.scss */
   main .popupwrapper {
     width: auto;
     max-width: 700px;
     margin: 16px auto;
     display: block; }
-  /* line 236, stylesheet.scss */
+  @media screen and (max-width: 690px) {
+    /* line 244, stylesheet.scss */
+    main .popupwrapper > label {
+      width: 300px !important;
+      max-width: 100% !important;
+      margin: 16px auto !important;
+      display: block !important; } }
+  /* line 252, stylesheet.scss */
   main .popupwrapper > label {
     width: 50%;
     max-width: 250px;
     margin: 30px 45px;
     display: inline-block;
     cursor: pointer; }
-  /* line 244, stylesheet.scss */
+  /* line 260, stylesheet.scss */
   main .popupbutton {
     width: 100%;
     padding-bottom: 100%;
@@ -225,23 +236,23 @@ main {
     background-repeat: no-repeat;
     color: #fff;
     transition: background-color 0.2s, filter 0.2s; }
-    /* line 256, stylesheet.scss */
+    /* line 272, stylesheet.scss */
     main .popupbutton:not(:hover) {
       background-color: #EEE !important; }
-    /* line 260, stylesheet.scss */
+    /* line 276, stylesheet.scss */
     main .popupbutton:hover {
       filter: brightness(120%); }
-    /* line 263, stylesheet.scss */
+    /* line 279, stylesheet.scss */
     main .popupbutton:active {
       filter: brightness(140%); }
-    /* line 267, stylesheet.scss */
+    /* line 283, stylesheet.scss */
     main .popupbutton > p {
       margin: 0;
       text-align: center;
       padding: 16px;
       padding-top: 60px;
       user-select: none; }
-  /* line 276, stylesheet.scss */
+  /* line 292, stylesheet.scss */
   main .popup {
     position: fixed;
     display: block;
@@ -258,36 +269,36 @@ main {
     z-index: 1;
     box-shadow: 0px 4px 32px 0px #0007;
     overflow: hidden; }
-    /* line 293, stylesheet.scss */
+    /* line 309, stylesheet.scss */
     main .popup .close {
       position: absolute;
       top: 0px;
       right: 0px; }
-      /* line 298, stylesheet.scss */
+      /* line 314, stylesheet.scss */
       main .popup .close img {
         width: 64px;
         height: 64px;
         cursor: pointer;
         padding: 16px; }
-        /* line 304, stylesheet.scss */
+        /* line 320, stylesheet.scss */
         main .popup .close img:hover, main .popup .close img:active {
           filter: invert(30%); }
-        /* line 307, stylesheet.scss */
+        /* line 323, stylesheet.scss */
         main .popup .close img:active {
           filter: invert(50%); }
-    /* line 313, stylesheet.scss */
+    /* line 329, stylesheet.scss */
     main .popup .wrapper {
       width: 100%;
       height: auto;
       overflow: auto; }
-      /* line 318, stylesheet.scss */
+      /* line 334, stylesheet.scss */
       main .popup .wrapper .header {
         width: 100%;
         height: 64px;
         background-color: #eee;
         display: block;
         overflow: hidden; }
-        /* line 325, stylesheet.scss */
+        /* line 341, stylesheet.scss */
         main .popup .wrapper .header .bgi {
           height: 64px;
           width: 200px;
@@ -297,27 +308,27 @@ main {
           background-size: 50%;
           background-repeat: no-repeat;
           margin-right: 16px; }
-        /* line 335, stylesheet.scss */
+        /* line 351, stylesheet.scss */
         main .popup .wrapper .header p {
           display: inline-block;
           vertical-align: top; }
-      /* line 340, stylesheet.scss */
+      /* line 356, stylesheet.scss */
       main .popup .wrapper .content {
         padding: 32px 16px;
         overflow: auto;
         max-width: 1152px;
         margin: 0 auto; }
-  /* line 348, stylesheet.scss */
+  /* line 364, stylesheet.scss */
   main input[type='checkbox'] {
     display: none; }
-  /* line 351, stylesheet.scss */
+  /* line 367, stylesheet.scss */
   main input:checked + .popup {
     transform: scale(1);
     border-radius: 0;
     opacity: 1;
     transition: transform 0.4s, border-radius 0.3s 0.1s, opacity 0.1s 0s;
     background-color: #fff; }
-  /* line 359, stylesheet.scss */
+  /* line 375, stylesheet.scss */
   main .cta_arrow {
     position: absolute;
     bottom: 12px;
@@ -335,10 +346,10 @@ main {
     cursor: pointer;
     animation: hop 2s ease 0s infinite;
     transition: transform 0.1s; }
-    /* line 377, stylesheet.scss */
+    /* line 393, stylesheet.scss */
     main .cta_arrow:hover {
       transform: scale(1.3); }
-    /* line 381, stylesheet.scss */
+    /* line 397, stylesheet.scss */
     main .cta_arrow.inverted {
       filter: brightness(0.15) drop-shadow(0px 1px 6px black); }
 @keyframes hop {
@@ -350,7 +361,7 @@ main {
     bottom: 22px; }
   50% {
     bottom: 12px; } }
-/* line 393, stylesheet.scss */
+/* line 409, stylesheet.scss */
 .link {
   background-color: #ccc;
   padding: 8px 8px;
@@ -366,23 +377,23 @@ main {
   text-decoration: none;
   color: #333;
   transition: background-color 0.2s, color 0.2s; }
-  /* line 409, stylesheet.scss */
+  /* line 425, stylesheet.scss */
   .link:hover {
     background-color: #bbb; }
-  /* line 413, stylesheet.scss */
+  /* line 429, stylesheet.scss */
   .link.git {
     background-image: url("media/code.svg"); }
-  /* line 417, stylesheet.scss */
+  /* line 433, stylesheet.scss */
   .link.steem {
     background-image: url("media/steem.svg"); }
-  /* line 421, stylesheet.scss */
+  /* line 437, stylesheet.scss */
   .link.download {
     background-image: url("media/dl_icon.svg"); }
-  /* line 425, stylesheet.scss */
+  /* line 441, stylesheet.scss */
   .link.docs {
     background-image: url("media/docs_icon.svg"); }
 
-/* line 429, stylesheet.scss */
+/* line 445, stylesheet.scss */
 .hoverpic {
   width: 128px;
   height: 128px;
@@ -390,7 +401,7 @@ main {
   border-radius: 50%;
   display: inline-block;
   position: relative; }
-  /* line 437, stylesheet.scss */
+  /* line 453, stylesheet.scss */
   .hoverpic p {
     color: #fff;
     opacity: 0;
@@ -401,11 +412,11 @@ main {
     transition: opacity 0.2s;
     margin: 0;
     font-size: 1.3em; }
-  /* line 449, stylesheet.scss */
+  /* line 465, stylesheet.scss */
   .hoverpic:hover p {
     opacity: 1;
     text-shadow: 0px 0px 7px #000; }
-  /* line 454, stylesheet.scss */
+  /* line 470, stylesheet.scss */
   .hoverpic + div > p {
     margin: 8px 0px 12px 8px; }
 
