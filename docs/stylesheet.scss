@@ -99,7 +99,7 @@ main {
 			vertical-align: top;
 			width: 33%;
 			height: auto;
-			overflow: auto;
+			overflow: hidden;
 
 			@media screen and (max-width: 950px) {
 				& {
@@ -163,6 +163,7 @@ main {
 					top: 20px;
 					transition: top 0.2s;
 					color: #000;
+					user-select: none;
 				}
 				p { 
 					font-size: 0.9em;
@@ -176,8 +177,8 @@ main {
 				}
 
 				img {
-					width: 50%;
-					height: 50%;
+					width: 40%;
+					height: 40%;
 					filter: brightness(0.5);
 					top: 40px;
 					position: relative;
@@ -189,7 +190,7 @@ main {
 
 				&:not(.disabled):hover {
 					img {
-						filter: brightness(1.2);
+						filter: brightness(1);
 						top: 10px;
 					}
 					h3 {
@@ -244,12 +245,15 @@ main {
     display: inline-block;
     border-radius: 50%;
     box-shadow: 0px 2px 12px 0px #0005;
-    transition: filter 0.2s;
     background-position: center center;
-    background-size: 70%;
+    background-size: 60%;
     background-repeat: no-repeat;
-    background-color: #9fa2ba;
   	color: #fff;
+  	transition: background-color 0.2s, filter 0.2s;
+
+		&:not(:hover) {
+			background-color: #EEE !important;
+		}
 
     &:hover {
     	filter: brightness(120%);
@@ -410,6 +414,14 @@ main {
 
 	&.steem {
 		background-image: url("media/steem.svg");
+	}
+
+	&.download {
+		background-image: url("media/dl_icon.svg");
+	}
+
+	&.docs {
+		background-image: url("media/docs_icon.svg");
 	}
 }
 .hoverpic {
