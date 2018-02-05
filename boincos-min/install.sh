@@ -78,6 +78,7 @@ sudo chmod +x /usr/bin/fwset /usr/bin/boincos-helper
 sudo chmod -w /usr/bin/fwset /usr/bin/boincos-helper
 sudo chmod -R -w /opt/helper/
 sudo chmod -R +rx /opt/helper/
+sudo chown -R root:root /opt/helper/
 cd /
 echo -e "[Unit]
 Description=BOINC OS Reporter Daemon\n
@@ -97,6 +98,7 @@ echo "Initialising and configuring BOINC..."
 sudo systemctl start boinc
 sudo usermod -a -G boinc boincuser
 cd /var/lib/
+echo "Waiting for BOINC files to be written"
 sleep 120 # Wait for the BOINC client to generate all necessary files
 echo "boincos" | sudo tee boinc/gui_rpc_auth.cfg
 sudo chown -R boinc:boinc boinc/
@@ -122,7 +124,7 @@ read -p "Perform security lockout? " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   cd /etc/
   sudo chmod u+w sudoers
-  echo "%sudo ALL=(ALL) NOPASSWD: /usr/bin/pacman -Syu,/usr/bin/reboot,/usr/bin/shutdown,/usr/bin/ufw,/usr/bin/systemctl,/usr/bin/wifi-menu,/usr/bin/netctl,/usr/bin/ip" \
+  echo "%sudo ALL=(ALL) NOPASSWD: /usr/bin/pacman -Syu,/usr/bin/reboot,/usr/bin/shutdown,/usr/bin/ufw,/usr/bin/systemctl,/usr/bin/wifi-menu,/usr/bin/netctl,/usr/bin/ip,/usr/bin/hostnamectl" \
   | sudo tee -a /tmp/sudoers
   sudo mv /tmp/sudoers.bak sudoers
   cd /
