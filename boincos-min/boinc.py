@@ -5,6 +5,7 @@ Authors:
   - Delta
 '''
 
+from value_change_template import template
 import curses
 
 ### DEFINITIONS ###
@@ -44,18 +45,15 @@ def boinc_help():
                 curses.endwin()
                 subprocess.call('sudo systemctl restart boinc', shell=True)
             elif (cursor[0] == 8):
-                pass_scrn_sel = None
                 cursor = [4, 3]
-                screen.clear()
-                screen.border(0)
-                while pass_scrn_sel != ord('q'):
+                pass_chg_sel = True
+                while pass_chg_sel:
+                    curses.endwin()
                     with open(PASS_DIR, 'r') as pass_file:
                         passwd = pass_file.read()
-                    screen.addstr(1, 1, 'Current password: ' + passwd)
-                    screen.addstr(4, 3, '->\t Change password')
-                    screen.refresh()
-                    pass_scrn_sel = screen.getch(cursor[0], cursor[1])
-                    if pass_scrn_sel == ord(' '):
+                    pass_chg_sel = template('password', passwd, 'Change password')
+                    if pass_chg_sel:
+                        screen.keypad(1)
                         screen.clear()
                         screen.border(0)
                         screen.addstr(1, 1, 'New password:')
@@ -63,6 +61,4 @@ def boinc_help():
                         newpass = screen.getstr(1, 15)
                         with open(PASS_DIR, 'w') as pass_file:
                             pass_file.write(newpass)
-                        screen.clear()
-                        screen.border(0)
     curses.endwin()

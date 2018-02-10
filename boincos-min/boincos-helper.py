@@ -5,10 +5,13 @@ Authors:
   - Delta
 '''
 
-from boinc import boinc_help
 from monitoring import  monitoring_tools
+from hostname import host_change
+from language import lang_change
+from keyboard import key_change
 from firewall import fw_config
 from netcfg import net_config
+from boinc import boinc_help
 from sys import exit
 import curses
 
@@ -22,7 +25,9 @@ BOINC_SEL = lambda cursor: cursor == [4, 3]
 MONITOR_SEL = lambda cursor: cursor == [6, 3]
 FIREW_SEL = lambda cursor: cursor == [8, 3]
 NET_SEL = lambda cursor: cursor == [10, 3]
-HELP_SEL = lambda cursor: cursor == [12, 3]
+HOST_SEL = lambda cursor: cursor == [12, 3]
+LANG_SEL = lambda cursor: cursor == [14, 3]
+KEYB_SEL = lambda cursor: cursor == [16, 3]
 YES_SEL = lambda cursor: cursor == [9, 43]
 NO_SEL = lambda cursor: cursor == [9, 56]
 OPT_DIR = '/home/boincuser/.helper.opt'
@@ -61,7 +66,10 @@ while selection != ord('q'):
     screen.addstr(6, 3, '->\t Monitoring tools')
     screen.addstr(8, 3, '->\t Firewall configuration')
     screen.addstr(10, 3, '->\t Network configuration')
-    screen.addstr(12, 3, '->\t Help')
+    screen.addstr(12, 3, '->\t Hostname')
+    screen.addstr(14, 3, '->\t Language')
+    screen.addstr(16, 3, '->\t Keyboard layout')
+    screen.addstr(18, 3, '->\t Help')
     # Radio button labels
     screen.addstr(4, 40, 'Start BOINC OS Helper')
     screen.addstr(5, 45, 'at login:')
@@ -107,6 +115,18 @@ while selection != ord('q'):
         elif NET_SEL(cursor):
             curses.endwin()
             exit(net_config())
+        elif HOST_SEL(cursor):
+            curses.endwin()
+            host_change()
+        elif LANG_SEL(cursor):
+            curses.endwin()
+            lang_change()
+        elif KEYB_SEL(cursor):
+            curses.endwin()
+            key_change()
+        elif HELP_SEL(cursor):
+            curses.endwin()
+            exit(7)
         elif YES_SEL(cursor):
             start_at_login = True
             radio_stateY = 'X'
@@ -117,9 +137,6 @@ while selection != ord('q'):
             radio_stateY = 'o'
             radio_stateN = 'X'
             write_opts('no')
-        elif HELP_SEL(cursor):
-            curses.endwin()
-            exit(7)
 
 curses.endwin() # Close curses gracefully
 exit(99) # Return a quit signal to the bash script
