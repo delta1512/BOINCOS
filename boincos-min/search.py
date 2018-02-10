@@ -25,9 +25,7 @@ def set_locale(locale):
         if '#{} '.format(locale) in raw_locale:
             localegen.write(raw_locale.replace('#{} '.format(locale), locale + ' '))
         localeconf.write('LANG=' + locale)
-    #check_call(['locale-gen'])
+    check_call(['locale-gen'])
 
 if __name__ == '__main__':
     print('This file is not intended for command line usage.')
-    while True:
-        print(*filter_query(get_locale_list(), input('>>> ')))
