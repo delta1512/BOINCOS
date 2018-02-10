@@ -19,14 +19,15 @@ def filter_query(locale_list, term):
     return filtered
 
 def set_locale(locale):
-    with open(locale_file) as f:
-        raw_locale = f.read()
-    if '#' + locale in raw_locale:
-        with open(locale_file, mode='w') as f:
-            f.write(raw_locale.replace('#{} '.format(locale), locale + ' '))
-    with open(setting_path, mode='w') as f:
-        f.write('LANG=' + locale)
-    check_call(['locale-gen'])
+    with open(locale_file, mode='r+') as localegen, open(setting_path, mode='w') as localeconf:
+        raw_locale = localegen.read()
+        localegen.seek(0)
+        if '#{} '.format(locale) in raw_locale:
+            localegen.write(raw_locale.replace('#{} '.format(locale), locale + ' '))
+        localeconf.write('LANG=' + locale)
+    #check_call(['locale-gen'])
 
 if __name__ == '__main__':
     print('This file is not intended for command line usage.')
+    while True:
+        print(*filter_query(get_locale_list(), input('>>> ')))
