@@ -8,7 +8,7 @@ def get_locale_list():
     locale_list = []
     with open(locale_file) as f:
         for locale in f.readlines():
-            locale_list.append(locale.replace('#', '', 1))
+            locale_list.append(locale.replace('#', '', 1).replace('\n', '').split()[0])
     return locale_list
 
 def filter_query(locale_list, term):
@@ -23,7 +23,7 @@ def set_locale(locale):
         raw_locale = f.read()
     if '#' + locale in raw_locale:
         with open(locale_file, mode='w') as f:
-            f.write(raw_locale.replace('#' + locale, locale))
+            f.write(raw_locale.replace('#{} '.format(locale), locale + ' '))
     with open(setting_path, mode='w') as f:
         f.write('LANG=' + locale)
     check_call(['locale-gen'])
