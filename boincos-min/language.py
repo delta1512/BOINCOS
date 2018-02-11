@@ -6,10 +6,16 @@ Authors:
 '''
 
 from value_change_template import template
+from subprocess import check_output
+import locale_tools as ltools
+from math import floor
 import curses
 
 ### DEFINITIONS ###
 LANG_FILE = '/etc/locale.conf'
+rows, columns = check_output('stty size', shell=True).decode().split()
+LONG_LOCALE = 18 # 1 + the length of the longest locale name
+COL_DELIM = floor(columns/LONG_LOCALE)
 
 def lang_change():
     selection = True
@@ -19,4 +25,30 @@ def lang_change():
             lang = lang_conf.read().replace('\n', '').replace('LANG=', '')
         selection = template('locale', lang, 'Change locale')
         if selection:
-            pass # Code for changing locale goes here
+            done = False
+            search = ''
+            locale_list = ltools.get_locale_list()
+            while not done:
+                screen.keypad(1)
+                screen.clear()
+                screen.border(0)
+                screen.addstr(1, 1, 'Type desired locale until a single entry appears on the screen')
+                screen.addstr(2, 1, 'New locale: ' + search)
+                counter = 0
+                for row in range(rows-5):
+                    for col in range(COL_DELIM):
+                        if counter < len(locale_list):
+                            screen.addstr(row+4, col*LONG_LOCALE, locale_list[counter])
+                            counter += 1
+                screen.refresh()
+                raw_char = screen.getch(2, 13+len(search))
+                if raw_char in [127, 8]:
+                    search = search[:len(search)-1]
+                elif raw_char == 13:
+                    done = True
+                else:
+                    search += chr(raw_char)
+                    locale_list = ltools.filter_query(locale_list, search)
+
+            if len(locale_list) == 1:
+                ltools.set_locale(locale_list[0])
