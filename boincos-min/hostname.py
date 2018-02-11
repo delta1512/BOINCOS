@@ -1,15 +1,18 @@
 '''
 BOINC OS Helper hostname handling script.
-Allows the user to see current hostname and change it if neccessary.
+Allows the user to see current hostname and change it if necessary.
 Authors:
   - Delta
 '''
 
 from value_change_template import template
+from subprocess import call
+import string as s
 import curses
 
 ### DEFINITIONS ###
 NAME_FILE = '/etc/hostname'
+BANNED_CHARS = [sym for sym in s.punctuation if not sym in ['-', '_']]
 
 def host_change():
     selection = True
@@ -19,4 +22,10 @@ def host_change():
             hname = hostnamef.read().replace('\n', '')
         selection = template('hostname', hname, 'Change hostname')
         if selection:
-            pass # Code for changing hostname goes here
+            screen.keypad(1)
+            screen.clear()
+            screen.border(0)
+            screen.addstr(1, 1, 'New hostname:')
+            screen.refresh()
+            newhname = ''.join(char for char in screen.getstr(1, 15) if not char in BANNED_CHARS)
+            call('sudo hostnamectl set-hostname ' + newhname, shell=True)
