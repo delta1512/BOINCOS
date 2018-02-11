@@ -1,8 +1,15 @@
+'''
+BOINC OS locale configuration functions.
+Functions for manipulating the locale settings of the BOINC OS system.
+Authors:
+  - Jokermc
+'''
+
 from os import path
 from subprocess import check_call
 
-setting_path = path.join('etc', 'locale.conf')
-locale_file = path.join('etc', 'locale.gen')
+setting_path = path.join('/etc', 'locale.conf')
+locale_file = path.join('/etc', 'locale.gen')
 
 def get_locale_list():
     locale_list = []
