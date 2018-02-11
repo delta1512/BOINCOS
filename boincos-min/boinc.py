@@ -6,6 +6,7 @@ Authors:
 '''
 
 from value_change_template import template
+from subprocess import call
 import curses
 
 ### DEFINITIONS ###
@@ -43,7 +44,7 @@ def boinc_help():
                 return 1 # Return case for starting boinctui
             elif (cursor[0] == 6):
                 curses.endwin()
-                subprocess.call('sudo systemctl restart boinc', shell=True)
+                call('sudo systemctl restart boinc', shell=True)
             elif (cursor[0] == 8):
                 cursor = [4, 3]
                 pass_chg_sel = True
