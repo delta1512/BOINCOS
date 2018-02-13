@@ -47,3 +47,11 @@ Main developer and experimenter for the BOINC OS PXE boot spin.
 |Coin        |Address                                   |
 |------------|:-----------------------------------------|
 |Gridcoin    |SDG44Y7HHTcTocYMAqAt5cS8nF33zBWk99        |
+
+### [Jokermc](https://github.com/jorkermc)
+
+Python developer helping out with the BOINC OS Helper.
+
+|Coin        |Address                                   |
+|------------|:-----------------------------------------|
+|Gridcoin    |S6VFAJVSyAjg5pdEQbCzCwqGZXzQ3QWbH9        |
