@@ -33,7 +33,7 @@ def lang_change():
                 screen.keypad(1)
                 screen.clear()
                 screen.border(0)
-                screen.addstr(1, 1, 'Type desired locale until a single entry appears on the screen')
+                screen.addstr(1, 1, 'Type desired locale and press enter when done.')
                 screen.addstr(2, 1, 'New locale: ' + search)
                 counter = 0
                 for row in range(rows-5):
@@ -45,11 +45,13 @@ def lang_change():
                 raw_char = screen.getch(2, 13+len(search))
                 if raw_char in [127, 8]:
                     search = search[:len(search)-1]
-                elif raw_char == 13:
+                elif raw_char == 10:
                     done = True
                 else:
                     search += chr(raw_char)
                     locale_list = ltools.filter_query(locale_list, search)
 
-            if len(locale_list) == 1:
+            if search in locale_list:
+                ltools.set_locale(locale_list[locale_list.index(search)])
+            elif len(locale_list) == 1:
                 ltools.set_locale(locale_list[0])

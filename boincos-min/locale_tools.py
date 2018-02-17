@@ -15,7 +15,8 @@ def get_locale_list():
     locale_list = []
     with open(locale_file) as f:
         for locale in f.readlines():
-            locale_list.append(locale.replace('#', '', 1).replace('\n', '').split()[0])
+            if len(locale.split()) > 0:
+                locale_list.append(locale.replace('#', '', 1).replace('\n', '').split()[0])
     return locale_list
 
 def filter_query(locale_list, term):
@@ -32,7 +33,7 @@ def set_locale(locale):
         if '#{} '.format(locale) in raw_locale:
             localegen.write(raw_locale.replace('#{} '.format(locale), locale + ' '))
         localeconf.write('LANG=' + locale)
-    check_call(['locale-gen'])
+    check_call('sudo locale-gen', shell=True)
 
 if __name__ == '__main__':
     print('This file is not intended for command line usage.')

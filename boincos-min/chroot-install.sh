@@ -15,6 +15,8 @@ echo "en_US.UTF-8 UTF-8" > locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > locale.conf
 
+chmod +rw locale.gen locale.conf
+
 echo
 echo "Setting hostname and hosts..."
 
@@ -23,6 +25,8 @@ echo > hosts
 echo "127.0.0.1    localhost.localdomain	localhost" >> hosts
 echo "::1          localhost.localdomain	localhost" >> hosts
 echo "127.0.1.1    BOINCOS-MIN.localdomain	BOINCOS-MIN" >> hosts
+
+echo "KEYMAP=us" > vconsole.conf
 
 echo
 echo "Installing initial packages..."
