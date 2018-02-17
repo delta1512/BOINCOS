@@ -28,6 +28,7 @@ NET_SEL = lambda cursor: cursor == [10, 3]
 HOST_SEL = lambda cursor: cursor == [12, 3]
 LANG_SEL = lambda cursor: cursor == [14, 3]
 KEYB_SEL = lambda cursor: cursor == [16, 3]
+HELP_SEL = lambda cursor: cursor == [18, 3]
 YES_SEL = lambda cursor: cursor == [9, 43]
 NO_SEL = lambda cursor: cursor == [9, 56]
 OPT_DIR = '/home/boincuser/.helper.opt'
@@ -88,9 +89,9 @@ while selection != ord('q'):
     screen.refresh() # Display components
     # Handle user selection/navigation
     selection = screen.getch(cursor[0], cursor[1])
-    if (selection == UP) and (4 < cursor[0] <= 12) and (cursor[1] == 3):
+    if (selection == UP) and (4 < cursor[0] <= 18) and (cursor[1] == 3):
         cursor[0] -= 2
-    elif (selection == DN) and (4 <= cursor[0] < 12) and (cursor[1] == 3):
+    elif (selection == DN) and (4 <= cursor[0] < 18) and (cursor[1] == 3):
         cursor[0] += 2
     elif (selection == LT):
         if (cursor[1] == 56): # Move from 'no' to 'yes'

@@ -10,6 +10,7 @@ import curses
 
 def template(val_name, value, option_msg):
     screen = curses.initscr()
+    selection = None
     while selection != ord('q'):
         screen.keypad(1)
         screen.clear()

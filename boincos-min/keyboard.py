@@ -11,9 +11,10 @@ import curses
 
 ### DEFINITIONS ###
 KEY_CONF = '/etc/vconsole.conf'
-KEYMAPS = sp.check_output('localectl list-keymaps').decode().split()
+KEYMAPS = sp.check_output('localectl list-keymaps --no-pager', shell=True).decode().split()
 
 def key_change():
+    screen = curses.initscr()
     selection = True
     # Enter main loop
     while selection:

@@ -15,6 +15,7 @@ NAME_FILE = '/etc/hostname'
 BANNED_CHARS = [sym for sym in s.punctuation if not sym in ['-', '_']]
 
 def host_change():
+    screen = curses.initscr()
     selection = True
     # Enter the main loop
     while selection:

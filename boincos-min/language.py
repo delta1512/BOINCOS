@@ -13,11 +13,12 @@ import curses
 
 ### DEFINITIONS ###
 LANG_FILE = '/etc/locale.conf'
-rows, columns = check_output('stty size', shell=True).decode().split()
+rows, columns = [int(i) for i in check_output('stty size', shell=True).decode().split()]
 LONG_LOCALE = 18 # 1 + the length of the longest locale name
-COL_DELIM = floor(columns/LONG_LOCALE)
+COL_DELIM = int(floor(columns/LONG_LOCALE))
 
 def lang_change():
+    screen = curses.initscr()
     selection = True
     # Enter the main loop
     while selection:
