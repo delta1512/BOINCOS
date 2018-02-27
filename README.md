@@ -1,10 +1,10 @@
 # BOINC OS Repository
 
-This repository contains the majority of files used in the BOINC OS system
+This repository contains the majority of files used in the BOINC OS system and is the source of the direct official downloads.
 
 ## What is BOINC OS?
 
-BOINC OS is a customised operating system tasked with the sole purpose of performing distributed/volunteer computing using the Berkley Open Infrastructure for Networked Computing [BOINC](https://boinc.berkeley.edu). BOINC OS's goal is to be run on a USB and be able to boot into any type of hardware in order to use the computer for scientific compute tasks. It is a linux operating system built upon [Arch Linux](https://www.archlinux.org).
+BOINC OS is a customised operating system tasked with the sole purpose of performing distributed/volunteer computing using the Berkley Open Infrastructure for Networked Computing [BOINC](https://boinc.berkeley.edu). BOINC OS's goal is to be run on a USB and be able to boot into any type of hardware in order to use the computer for scientific compute tasks. It is a linux-based operating system built upon [Arch Linux](https://www.archlinux.org).
 
 Find more information [on our website](https://delta1512.github.io/BOINCOS/).
 
@@ -24,13 +24,19 @@ A Bittorrent link will be coming soon!
 
 ## Requirements
 
-- A desktop computer or compatible laptop 
+- A desktop computer or compatible laptop (64-bit, UEFI boot and non-legacy CPU)
 
 - A non-legacy (compliant with drivers) Intel, AMD or Nvidia graphics card
 
-- At least an 4GB USB or hard drive
+- At least a 4GB USB or hard drive
 
 - An internet connection
+
+- A computer with an existing OS (to flash the USB)
+
+## Installation
+
+You can find instructions on installing and using the OS within the [documentation](https://github.com/delta1512/BOINCOS/tree/master/Documentation) folder in the repository.
 
 ## Founders
 
